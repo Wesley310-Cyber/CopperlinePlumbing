@@ -1,0 +1,149 @@
+/* Home option B — Pall Mall, White Paper (Pall Mall Brand Kit, Option B): white page, deep navy type, gold as a rule and fill only */
+:root{
+  --white:#FBF6EC;--navy:#0E3B3D;--navy2:#0A2D2F;--navy3:#4A5C59;--gold:#A5481A;--gold-l:#E3A35C;--gold-ghost:#a5481a26;
+  --steel:#B9CFCB;--near:#F3EBDA;--rule:#D8CCB2;--alert:#B83A06;--ink:#16282A;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--navy);font-family:Figtree,system-ui,Arial,sans-serif;font-size:18px;line-height:1.65;font-weight:400}
+p{margin:0;text-wrap:pretty}
+ul,ol{margin:0;padding:0;list-style:none}
+a{color:inherit}
+h1,h2,h3{margin:0;font-family:"Fraunces",Garamond,Georgia,serif;text-wrap:balance}
+h1{font-weight:300;font-size:clamp(44px,7vw,84px);line-height:.98;letter-spacing:-.01em}
+h2{font-weight:400;font-size:clamp(34px,4.6vw,56px);line-height:1.04}
+h3{font-weight:600;font-size:26px;line-height:1.15}
+em{font-style:italic;font-weight:500}
+.lead{font-size:clamp(19px,2.2vw,22px);line-height:1.6;font-weight:300;color:var(--navy3);max-width:56ch}
+.mute{color:var(--navy3)}
+.small{font-size:15px;line-height:1.5}
+.caps{font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.eyebrow{font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.eyebrow::before{content:"";display:block;width:44px;height:3px;background:var(--gold);margin-bottom:14px}
+a:focus-visible,summary:focus-visible,button:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+.on-navy a:focus-visible,.panel a:focus-visible{outline-color:var(--gold)}
+
+.page{box-shadow:inset 0 14px 0 var(--gold)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.sec{padding:96px 0}
+.alt{background:var(--near)}
+.panel{background:var(--navy);color:var(--near)}
+.panel .mute,.panel .lead{color:var(--steel)}
+.panel .eyebrow{color:var(--near)}
+.stack{display:flex;flex-direction:column;gap:16px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.split{display:flex;flex-wrap:wrap;gap:56px;align-items:center}
+.split>*{flex:1 1 420px;min-width:0}
+.grid3{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
+.grid4{display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr))}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 56px;margin-bottom:48px}
+.head .lead{flex:0 1 46ch}
+.chapter{font:300 clamp(64px,9vw,120px)/.8 "Fraunces",Georgia,serif;color:var(--gold-ghost);margin-bottom:8px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:2px;border:1px solid transparent;font:600 14px/20px Figtree,Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer}
+.btn-lg{min-height:64px;font-size:15px;padding:0 36px}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-gold:hover{background:var(--gold-l)}
+.btn-navy{background:var(--navy);color:var(--near)}
+.btn-line{border-color:var(--navy);color:var(--navy);background:transparent}
+.panel .btn-line{border-color:var(--near);color:var(--near)}
+.textlink{display:inline-flex;align-items:center;min-height:48px;font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:6px}
+
+.card{background:var(--white);border:1px solid var(--rule);border-radius:4px;padding:32px}
+.card-top{border-top:4px solid var(--gold)}
+.alt .card{background:var(--white)}
+.alertbox{border:2px solid var(--alert);border-radius:4px;background:var(--white)}
+.rule{border:0;border-top:1px solid var(--rule);margin:0}
+.ico{width:44px;height:44px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ico-sm{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ph{display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;min-height:280px;border:1px dashed var(--navy);background:var(--near);color:var(--navy3);font-size:15px;line-height:1.45;font-weight:400}
+.alt .ph{background:var(--white)}
+.proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:28px}
+.proof b{display:block;font:300 34px/1.1 "Fraunces",Georgia,serif;color:var(--gold-l);letter-spacing:.01em}
+.proof span{display:block;margin-top:6px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--steel)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--gold);margin-right:10px}
+.quote{font:500 italic 28px/1.3 "Fraunces",Georgia,serif}
+
+.stickytop{position:sticky;top:0;z-index:50}
+.mbar{display:none}
+.mob{display:none!important}
+.nav a{display:inline-flex;align-items:center;min-height:48px;text-decoration:none;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.nav a:hover{text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:6px}
+@media (max-width:760px){
+  .wrap{padding:0 20px}
+  .sec{padding:56px 0}
+  .split{gap:32px}
+  .head{margin-bottom:32px}
+  .btn-lg{width:100%}
+  .card{padding:24px}
+  .dsk{display:none!important}
+  .mob{display:flex!important}
+  .mbar{display:block;position:sticky;bottom:0;z-index:50;background:var(--navy);padding:10px 12px;border-top:3px solid var(--gold)}
+  .mbar .btn{width:100%}
+}
+
+/* Landing page, original cream/teal/copper palette (re-themed from pm.css + lp.css) */
+.acc{display:flex;flex-direction:column;gap:14px}
+.acc details{background:var(--white);border:1px solid var(--rule);border-top:4px solid var(--gold);border-radius:4px}
+.acc summary{display:flex;align-items:center;gap:16px;min-height:80px;padding:14px 20px;cursor:pointer;list-style:none;font:600 24px/1.15 "Fraunces",Georgia,serif}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";margin-left:auto;padding-left:8px;font:300 36px/1 Figtree,Arial,sans-serif;flex:none}
+.acc details[open] summary::after{content:"\2013"}
+.acc .body{padding:4px 20px 26px;display:flex;flex-direction:column;gap:20px}
+.sub{font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--navy3);margin-bottom:6px}
+.lines{display:flex;flex-direction:column;gap:8px}
+.lines li{padding-left:20px;position:relative}
+.lines li::before{content:"";position:absolute;left:0;top:.75em;width:8px;height:2px;background:var(--gold)}
+.dolist{display:flex;flex-direction:column;gap:14px}
+.dolist li{display:flex;gap:16px;align-items:flex-start}
+.dolist b{font:300 44px/1 "Fraunces",Georgia,serif;flex:none;min-width:30px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.field input,.field select,.field textarea{width:100%;min-height:54px;font:inherit;padding:12px 14px;border-radius:2px;border:1px solid var(--navy);background:var(--white);color:var(--navy)}
+.narrow{max-width:760px;margin-left:auto;margin-right:auto}
+.anchor{scroll-margin-top:120px}
+
+/* ---- Original palette overrides: cream / deep teal / copper, Fraunces + Figtree, soft radii ---- */
+body{color:var(--ink);font-weight:400;font-size:18px}
+h1,h2,h3{font-weight:700;letter-spacing:-.01em}
+h1{font-weight:700;font-size:clamp(34px,8vw,60px);line-height:1.08}
+h2{font-weight:700;font-size:clamp(28px,5vw,42px);line-height:1.12}
+h3{font-weight:700}
+em{font-style:normal;font-weight:700;color:var(--gold)}
+.panel em,.panel h2 em{color:var(--gold-l)!important}
+.lead{font-weight:400;color:var(--ink)}
+.panel .lead{color:var(--steel)}
+.eyebrow,.caps,.sub,.field label,.proof span{letter-spacing:.09em;font-weight:700}
+.eyebrow::before{display:none}
+.eyebrow{color:var(--navy3)}
+.page{box-shadow:none}
+.btn{border-radius:14px;text-transform:none;letter-spacing:0;font-size:18px;font-weight:700}
+.btn-lg{font-size:21px;border-radius:14px}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:#8d3d14}
+.btn-line{border-width:2px;border-color:var(--ink);color:var(--ink)}
+.panel .btn-line{border-color:var(--near);color:var(--near)}
+.textlink{text-transform:none;letter-spacing:0;font-size:18px;text-decoration-color:var(--gold);text-underline-offset:4px}
+.card{border-radius:18px;background:var(--near)}
+.alt .card{background:var(--white)}
+.card-top{border-top:1px solid var(--rule)}
+.alertbox{border:3px solid var(--alert);border-radius:18px;background:#FCEADB}
+.ph{border:2px dashed var(--navy3);border-radius:18px;color:var(--navy3);font-weight:600;background:repeating-linear-gradient(135deg,var(--near) 0 14px,var(--rule) 14px 15px)}
+.alt .ph{background:repeating-linear-gradient(135deg,var(--white) 0 14px,var(--rule) 14px 15px)}
+.proof b{font-weight:700;color:var(--gold-l)}
+.quote{font:600 24px/1.35 Fraunces,Georgia,serif;font-style:normal}
+.chapter{color:var(--gold-ghost)}
+.acc details{background:var(--near);border:1px solid var(--rule);border-top:1px solid var(--rule);border-radius:18px;overflow:hidden}
+.acc summary{font:700 22px/1.2 Fraunces,Georgia,serif}
+.acc summary::after{font:700 32px/1 Figtree,Arial,sans-serif;color:var(--gold)}
+.field input,.field select,.field textarea{border:2px solid var(--navy3);border-radius:12px;background:var(--white);color:var(--ink)}
+.panel{background:var(--navy)}
+footer[style]{background:var(--navy2)!important}
+.mbar{background:var(--navy);border-top:2px solid var(--gold-l)}
+.dolist b{font-weight:700;color:var(--gold)}
+.lines li::before{background:var(--gold);height:3px;border-radius:2px}
+a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.tbl2{border-radius:16px!important;background:var(--white)}
+.tbl2 thead tr{background:var(--near)!important}
+
+.btn,.btn-lg{white-space:nowrap}
+.btn-lg{font-size:clamp(16px,4.9vw,20px);padding-left:14px;padding-right:14px}
