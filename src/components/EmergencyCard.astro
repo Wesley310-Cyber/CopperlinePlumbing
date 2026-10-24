@@ -1,0 +1,50 @@
+---
+import CallButton from './CallButton.astro';
+import Icon from './Icon.astro';
+import { biz, money, priceRange } from '../lib/business';
+
+interface Props {
+  id: 'leak' | 'sewer' | 'heater';
+  title: string;
+  summary: string;
+  signs: string[];
+  doNow: string[];
+  tonight: string;
+  permanentFix: string;
+}
+const { id, title, summary, signs, doNow, tonight, permanentFix } = Astro.props;
+const range = priceRange(biz.pricing.emergencies[id]);
+---
+<details>
+  <summary><Icon name={id} />{title}</summary>
+  <div class="body">
+    <p class="mute">{summary}</p>
+    <div><p class="sub">Signs</p><ul class="lines">{signs.map((s) => <li>{s}</li>)}</ul></div>
+    <div>
+      <p class="sub">Do this now</p>
+      <ol class="dolist">{doNow.map((s, i) => <li><b>{i + 1}</b><span>{s}</span></li>)}</ol>
+    </div>
+    <div><p class="sub">What we'll do tonight</p><p>{tonight}</p></div>
+    <div>
+      <p class="sub">Typical price range</p>
+      <p class="range">{range}</p>
+      <p class="small mute">A typical range. Your final price is quoted on site before work begins.</p>
+    </div>
+    <div><p class="sub">The permanent fix</p><p>{permanentFix}</p></div>
+    <p class="anchor-line">Typically {range}. The {money(biz.pricing.afterHoursVisitFee)} visit fee is credited toward the job. You approve the price before we start.</p>
+    <CallButton large primary label="Call" />
+  </div>
+</details>
+<style>
+  details{background:var(--cream-deep);border:1px solid var(--rule);border-radius:18px;overflow:hidden}
+  summary{display:flex;align-items:center;gap:16px;min-height:80px;padding:14px 20px;cursor:pointer;list-style:none;font:700 22px/1.2 var(--font-head)}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";margin-left:auto;padding-left:8px;font:700 32px/1 var(--font-body);color:var(--copper);flex:none}
+  details[open] summary::after{content:"\2013"}
+  .body{padding:4px 20px 26px;display:flex;flex-direction:column;gap:20px}
+  .range{font:400 32px/1.1 var(--font-head)}
+  .dolist{display:flex;flex-direction:column;gap:14px}
+  .dolist li{display:flex;gap:16px;align-items:flex-start}
+  .dolist b{font:700 44px/1 var(--font-head);flex:none;min-width:30px;color:var(--copper)}
+  .anchor-line{font-weight:600;padding:12px 16px;border-left:4px solid var(--copper);background:var(--cream)}
+</style>

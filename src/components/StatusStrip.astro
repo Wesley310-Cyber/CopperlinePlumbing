@@ -1,0 +1,11 @@
+---
+import { biz, onCallReady } from '../lib/business';
+const { onCall } = biz;
+---
+{onCallReady && (
+  <p class="status"><span class="dot" aria-hidden="true"></span>On call tonight: <strong>{onCall.name}</strong> — typical arrival {onCall.arrivalWindow} in the {onCall.region}.</p>
+)}
+<style>
+  .status{background:var(--teal);color:var(--cream-deep);font-size:13px;line-height:1.35;padding:8px 16px;text-align:center}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--copper);margin-right:10px}
+</style>

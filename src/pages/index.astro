@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CallButton from '../components/CallButton.astro';
+import EmergencyCard from '../components/EmergencyCard.astro';
+import GasWarning from '../components/GasWarning.astro';
+import CallbackForm from '../components/CallbackForm.astro';
+import Icon from '../components/Icon.astro';
+import Photo from '../components/Photo.astro';
+import PriceTable from '../components/PriceTable.astro';
+import Reviews from '../components/Reviews.astro';
+import ServiceMap from '../components/ServiceMap.astro';
+import emergencies from '../data/emergencies.json';
+import { biz, money, owner, leadTech, yearsInBusiness } from '../lib/business';
+
+import heroImg from '../assets/img/hero.jpg';
+import familyImg from '../assets/img/family.jpg';
+import ownerImg from '../assets/img/owner.jpg';
+import techImg from '../assets/img/tech.jpg';
+import officeImg from '../assets/img/office.jpg';
+
+const { rating, guarantee, license, serviceArea, pricing, address } = biz;
+const guaranteeLine = `Workmanship guarantee: ${guarantee.months} months, ${guarantee.coverage}`;
+const trustLine = [biz.insured ? 'Licensed & Insured' : 'Licensed', ...biz.standards, guaranteeLine].join(' · ');
+const cityList = serviceArea.cities.join(', ');
+const steps = [
+  { icon: 'valve', title: 'Shut off the main water', text: 'Often near the hose spigot, on the garage wall, or in the curb meter box. Turn the wheel clockwise until it stops.' },
+  { icon: 'heaterOff', title: 'Turn off the water heater', text: 'Gas: knob to OFF. Electric: switch off the breaker. Then close the cold-water valve on top.' },
+  { icon: 'drain', title: 'Stop using the drains', text: 'No flushing, laundry, or showers if water is backing up. Skip the chemical drain cleaners.' },
+] as const;
+---
+<BaseLayout>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap split">
+      <div class="stack gap20">
+        <p class="eyebrow">Family-owned · {address.city} · {biz.hours.label}</p>
+        <h1>Plumbing emergency? <em>We're up.</em> We'll pick up.</h1>
+        <p class="lead">Family-owned in {address.city} since {biz.foundedYear}. Licensed, local, and on call tonight.</p>
+        <div class="row cta-row">
+          <CallButton large primary label="Call now" />
+          <a class="textlink" href="#callback">Not urgent? We'll call you back.</a>
+        </div>
+        <p class="small mute">A real person answers, day or night. No menus, no call center.</p>
+      </div>
+      <Photo src={heroImg} alt="The Copperline owner beside the company van outside a Pasadena Craftsman home" ratio="4/3" widths={[560, 1120]} sizes="(max-width: 760px) 100vw, 560px" eager />
+    </div>
+  </section>
+
+  <!-- Proof -->
+  <section class="panel proof-sec">
+    <div class="wrap stack gap22">
+      <div class="proof">
+        <div><b>{license.number}</b><span>CA Lic. · {license.classification}</span></div>
+        <div><b>{biz.foundedYear}</b><span>Family-owned since</span></div>
+        <div><b>24/7</b><span>A real person answers</span></div>
+        <div><b>{rating.value}</b><span>{rating.source}, {rating.count} reviews</span></div>
+      </div>
+      <p class="small trust">{trustLine}</p>
+    </div>
+  </section>
+
+  <!-- What's happening: emergencies inline -->
+  <section class="sec anchor now" id="now">
+    <div class="wrap narrow stack gap24">
+      <div class="stack gap10"><p class="eyebrow">Right now</p><h2>What's happening <em>right now?</em></h2><p class="lead">Tap the one that fits. Not sure? Just call.</p></div>
+      <GasWarning />
+      <div class="acc">
+        {emergencies.map((e) => <EmergencyCard {...e} id={e.id as 'leak' | 'sewer' | 'heater'} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Do this while we drive -->
+  <section class="sec alt anchor" id="drive">
+    <div class="wrap narrow stack gap24">
+      <div class="stack gap10"><p class="eyebrow">While you wait for us</p><h2>Do this <em>while we drive</em></h2></div>
+      <ol class="steps">
+        {steps.map((s, i) => (
+          <li><span class="num">{i + 1}</span><div class="stack gap6"><h3>{s.title}</h3><p class="mute">{s.text}</p></div><Icon name={s.icon} style="width:52px;height:52px" /></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="sec anchor" id="price">
+    <div class="wrap narrow stack gap22">
+      <div class="stack gap10"><p class="eyebrow">No surprises</p><h2>How our after-hours pricing <em>works</em></h2><p class="lead">Here's exactly how our after-hours pricing works — before we ever roll a truck.</p></div>
+      <div class="facts">
+        <div class="stack gap6 fact"><p class="sub">After-hours visit fee</p><p class="fee">{money(pricing.afterHoursVisitFee)}</p><p class="mute">If you go ahead with the repair, it's credited toward the job.</p></div>
+        <div class="stack gap6 fact"><h3>A flat price, not a clock</h3><p class="mute">We price by the job, not by the minute. You'll approve a flat price before we start.</p></div>
+        <div class="stack gap6 fact"><h3>The same every night</h3><p class="mute">Our after-hours rates are published right here and are the same every night of the year.</p></div>
+      </div>
+      <PriceTable />
+      <p class="mute">Why? Driving farther costs real fuel, truck wear, and a technician's time. We'd rather tell you up front than surprise you.</p>
+      <CallButton large primary label="Call" />
+    </div>
+  </section>
+
+  <!-- Family -->
+  <section class="sec alt anchor" id="family">
+    <div class="wrap narrow stack gap22">
+      <Photo src={familyImg} alt="The Copperline family together by the van" ratio="4/3" widths={[480, 960]} sizes="(max-width: 760px) 100vw, 760px" />
+      <p class="eyebrow">Meet the family</p>
+      <h2>When you call, you get <em>{owner.firstName}</em>, not a call center.</h2>
+      <p class="lead">{biz.about.intro}</p>
+      <p class="mute">{biz.about.story}</p>
+      <div class="portraits">
+        <div class="stack gap6"><Photo src={ownerImg} alt="Owner portrait" ratio="1/1" widths={[240, 480]} sizes="(max-width: 760px) 30vw, 240px" /><p class="small caps cap">{owner.firstName} {owner.lastName}, {owner.role}</p></div>
+        <div class="stack gap6"><Photo src={techImg} alt="Technician portrait" ratio="1/1" widths={[240, 480]} sizes="(max-width: 760px) 30vw, 240px" /><p class="small caps cap">{leadTech.firstName}, {leadTech.role}</p></div>
+        <div class="stack gap6"><Photo src={officeImg} alt="Office manager portrait" ratio="1/1" widths={[240, 480]} sizes="(max-width: 760px) 30vw, 240px" /><p class="small caps cap">The {biz.familyName} family</p></div>
+      </div>
+      <p class="caps">{yearsInBusiness} years in business · A {address.city} shop</p>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="sec anchor" id="reviews">
+    <div class="wrap narrow stack gap24"><Reviews /></div>
+  </section>
+
+  <!-- Service area -->
+  <section class="sec panel anchor" id="area">
+    <div class="wrap narrow stack gap22">
+      <p class="eyebrow">Service area</p>
+      <h2 class="light">Based in {address.city}. <em>On call across the valley.</em></h2>
+      <ServiceMap />
+      <p class="mist">Based in {address.city}, serving {cityList}, and more. We'll come up to {pricing.maxTravelMiles} miles from our shop for emergencies — with a clear, flat travel fee for longer drives.</p>
+    </div>
+  </section>
+
+  <!-- Audiences + plans -->
+  <section class="sec">
+    <div class="wrap narrow stack gap22">
+      <p class="eyebrow">Beyond the emergency</p>
+      <h2>For homes, rentals, and <em>the shops downstairs</em></h2>
+      <div class="card stack gap8"><h3>Homeowners</h3><p><strong>We treat your home like ours.</strong></p><p class="mute">Shoe covers, drop cloths, and a clear explanation before we touch anything.</p></div>
+      <div class="card stack gap8"><h3>Landlords &amp; property managers</h3><p><strong>One call, priority response.</strong></p><p class="mute">Photos and invoices for your records, tenant-friendly scheduling, and maintenance plans for small multi-unit buildings.</p></div>
+      <div class="card stack gap8"><h3>Small businesses &amp; restaurants</h3><p><strong>We know every hour closed costs you money.</strong></p><p class="mute">Priority dispatch, night and weekend repairs, and a plan that catches problems before service.</p></div>
+      <a class="textlink" href="#callback">Ask about a maintenance plan →</a>
+    </div>
+  </section>
+
+  <!-- Callback / plan form -->
+  <section class="sec alt anchor" id="callback">
+    <div class="wrap narrow stack gap20">
+      <p class="eyebrow">Not urgent?</p>
+      <h2>We'll <em>call you back.</em></h2>
+      <p class="lead">Quotes, maintenance plans, a drain that's slow but not backing up. Leave your number and we'll call you back the same business day.</p>
+      <CallbackForm />
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="panel final">
+    <div class="wrap stack center gap20">
+      <h2 class="light">Day or night, <em>call <span class="call-num">{biz.phone.display}</span>.</em></h2>
+      <p class="lead">A real person answers. Not a call center, not a menu.</p>
+      <CallButton large primary number={false} label="Call now: talk to a real person" />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .gap6{gap:6px}.gap8{gap:8px}.gap10{gap:10px}.gap20{gap:20px}.gap22{gap:22px}.gap24{gap:24px}
+  .hero{padding:40px 0 48px}
+  .hero .split{gap:32px}
+  .cta-row{gap:4px 24px}
+  .proof-sec{padding:36px 0}
+  .proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:22px 16px}
+  .proof b{display:block;font:700 34px/1.1 var(--font-head);color:var(--copper-light);letter-spacing:.01em}
+  .proof span{display:block;margin-top:6px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mist)}
+  .trust{color:var(--mist);border-top:1px solid var(--line-on-teal);padding-top:16px}
+  .now{padding-top:96px;padding-bottom:56px}
+  .acc{display:flex;flex-direction:column;gap:14px}
+  .steps{display:flex;flex-direction:column}
+  .steps li{display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--rule)}
+  .steps li:last-child{border-bottom:1px solid var(--rule)}
+  .steps .num{font:300 64px/.9 var(--font-head);flex:none;min-width:40px}
+  .steps .stack{flex:1}
+  .facts{border-top:4px solid var(--copper)}
+  .fact{padding:20px 0;border-bottom:1px solid var(--rule)}
+  .fact:first-child{padding:24px 0}
+  .fee{font:300 60px/1 var(--font-head)}
+  .portraits{display:grid;gap:10px;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .cap{font-size:11px}
+  .light{color:var(--cream-deep)}
+  .mist{color:var(--mist)}
+  .final{padding:72px 0;text-align:center;border-top:6px solid var(--copper)}
+  .center{align-items:center}
+  @media (max-width:760px){
+    .now{padding-top:56px}
+  }
+</style>

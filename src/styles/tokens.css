@@ -1,0 +1,37 @@
+/* Design tokens: Copperline design system (cream / deep teal / copper, Fraunces + Figtree).
+   Do not add new colors. Every value below comes from the Claude Design export. */
+:root {
+  /* Brand */
+  --teal: #0E3B3D;
+  --cream: #FBF6EC;
+  --copper: #A5481A;
+  --alert: #B83A06;
+
+  /* Tints and shades of the brand colors used by the export */
+  --teal-deep: #0A2D2F;
+  --cream-deep: #F3EBDA;
+  --copper-light: #E3A35C;
+  --copper-dark: #8D3D14;
+  --copper-ghost: #A5481A26;
+  --alert-tint: #FCEADB;
+  --mist: #B9CFCB;
+  --rule: #D8CCB2;
+  --ink: #16282A;
+  --muted: #4A5C59;
+  --on-copper: #fff;
+
+  /* Carried over from the export's earlier theme (olive lines on teal, service map).
+     Kept so the look matches exactly; candidates for cleanup in a later design pass. */
+  --line-on-teal: rgba(181, 166, 66, .35);
+  --map-ring: #b5a642;
+  --map-ring-hot: #d4c96a;
+  --map-text: #f4f7fa;
+  --map-city: #bcc8d6;
+
+  /* Type */
+  --font-head: "Fraunces", Georgia, serif;
+  --font-body: "Figtree", system-ui, Arial, sans-serif;
+
+  /* Layout */
+  --tap: 48px;
+}

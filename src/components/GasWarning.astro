@@ -1,0 +1,20 @@
+---
+import Icon from './Icon.astro';
+import { biz, gasTelHref } from '../lib/business';
+const gas = biz.gasUtility;
+---
+<div class="alertbox stack">
+  <div class="top">
+    <Icon name="flame" style="color:var(--alert)" />
+    <p><strong>Smell gas? Leave now</strong> and call {gas.name} at <a href={gasTelHref} class="num">{gas.phone}</a> or 911 from outside. Then call us for the repair.</p>
+  </div>
+  <p class="small mute">Don't flip switches, use a lighter, or use a phone inside. Stay out until {gas.name} or the fire department says it's safe.</p>
+  <a class="btn btn-line" href={gasTelHref}><span class="call-text">Call {gas.name} <span class="call-num">{gas.phone}</span></span></a>
+</div>
+<style>
+  .alertbox{gap:14px;padding:22px 20px;border:3px solid var(--alert);border-radius:18px;background:var(--alert-tint)}
+  .alertbox .btn-line{border-color:var(--alert);color:var(--alert);padding-left:14px;padding-right:14px}
+  .top{display:flex;gap:12px;align-items:flex-start}
+  .top p{font-size:19px}
+  .num{font-weight:600;white-space:nowrap}
+</style>

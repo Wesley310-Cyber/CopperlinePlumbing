@@ -1,0 +1,58 @@
+[
+  {
+    "id": "leak",
+    "title": "Water is leaking or spraying",
+    "summary": "Burst pipe, slab leak, or a main valve that won't shut off.",
+    "icon": "leak",
+    "signs": [
+      "Water spraying or dripping from the ceiling or walls",
+      "Running water sounds with everything off",
+      "Warm or wet spots on the floor",
+      "Water meter spinning, or main valve won't close"
+    ],
+    "doNow": [
+      "Shut the main valve. In older Pasadena-area homes it's often by the hose spigot, on the garage wall, or in the curb meter box. Turn clockwise.",
+      "Turn off the water heater.",
+      "Move valuables and photograph the damage for insurance."
+    ],
+    "tonight": "Stop the water, make a safe temporary or permanent repair, and check for hidden damage.",
+    "permanentFix": "Leak detection, section repair, or a repipe. Older homes often have galvanized pipe, and many 1950s–70s homes have copper lines in the slab. We'll look at the whole picture."
+  },
+  {
+    "id": "sewer",
+    "title": "Sewage or water is backing up",
+    "summary": "Several drains slow, a toilet overflowing, or the tub filling when you flush.",
+    "icon": "sewer",
+    "signs": [
+      "Several drains slow at once",
+      "A flush that backs up into the tub or shower",
+      "Gurgling from drains or toilets",
+      "Sewage at the lowest drain or yard cleanout"
+    ],
+    "doNow": [
+      "Stop running water and stop flushing.",
+      "Keep kids and pets away.",
+      "Don't use chemical drain cleaners."
+    ],
+    "tonight": "Clear the main line and show you the camera footage, so you see exactly what we found.",
+    "permanentFix": "Root treatment, hydro jetting, trenchless lining, or lateral replacement. Mature street trees and older clay sewer lines are common in Pasadena neighborhoods, and winter storms and holiday weekends put extra load on them."
+  },
+  {
+    "id": "heater",
+    "title": "Water heater leaking or no hot water",
+    "summary": "Water around the tank, rust-colored water, or nothing but cold.",
+    "icon": "heater",
+    "signs": [
+      "Water around the tank",
+      "Rust-colored hot water",
+      "Relief valve dripping or discharging",
+      "Popping or rumbling, or no hot water at all"
+    ],
+    "doNow": [
+      "Turn off the gas or power to the heater.",
+      "Close the cold-water valve on top of the tank."
+    ],
+    "tonight": "Diagnose it, repair it if that makes sense, or replace it the same night from stock on our truck when possible.",
+    "permanentFix": "A correct replacement with straps, an expansion tank and proper venting, plus options for flushing and water softening. Water here is hard, which shortens tank life."
+  }
+]

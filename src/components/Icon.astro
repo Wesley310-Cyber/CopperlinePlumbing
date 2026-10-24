@@ -1,0 +1,21 @@
+---
+// Inline line icons from the Claude Design export. All share the 48x48 grid.
+const paths = {
+  phone: '<path d="M10 6h8l4 10-5 3a24 24 0 0 0 12 12l3-5 10 4v8a4 4 0 0 1-4 4C20 42 6 28 6 10a4 4 0 0 1 4-4z"></path>',
+  flame: '<path d="M24 4c2 9 12 13 12 25a12 12 0 0 1-24 0c0-6 3-9 5-15 3 2 5 5 5 8 3-4 3-10 2-18z"></path>',
+  leak: '<path d="M4 30h14M30 30h14M18 24v12M30 24v12M24 24V8M24 24L15 12M24 24l9-12"></path>',
+  sewer: '<circle cx="24" cy="24" r="17"></circle><path d="M17 13v22M24 10v28M31 13v22"></path>',
+  heater: '<rect x="12" y="7" width="24" height="36" rx="3"></rect><path d="M19 7V3M29 7V3M24 19c-5 6-5 10 0 12 5-2 5-6 0-12z"></path>',
+  valve: '<path d="M3 32h42M15 32v-9h18v9M24 23V12M15 12h18"></path>',
+  heaterOff: '<rect x="12" y="7" width="24" height="36" rx="3"></rect><path d="M19 7V3M29 7V3M18 27h12"></path>',
+  drain: '<path d="M7 28h34v3a9 9 0 0 1-9 9H16a9 9 0 0 1-9-9zM24 28V15a6 6 0 0 1 6-6h6M33 5l9 9M42 5l-9 9"></path>',
+} as const;
+
+interface Props {
+  name: keyof typeof paths;
+  size?: 'sm' | 'md';
+  style?: string;
+}
+const { name, size = 'md', style } = Astro.props;
+---
+<svg class={size === 'sm' ? 'ico-sm' : 'ico'} style={style} viewBox="0 0 48 48" aria-hidden="true" set:html={paths[name]}></svg>

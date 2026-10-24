@@ -4,7 +4,7 @@ Purpose: turn people in a plumbing emergency (nights, weekends, holidays) into p
 
 ## Current state
 - This is a TEST project. All business facts are fictional demo values (see "Demo mode").
-- The starting point is the static Claude Design export in `/design-export` (index.html, styles.css, img/). Treat it as the visual and copy source of truth. Do not redesign it.
+- The starting point is the static Claude Design export in `/design-export` (design-export/index.html, design-export/styles.css, design-export/img/). Treat it as the visual and copy source of truth. Do not redesign it.
 - The target is an Astro site deployed to Netlify from this GitHub repo.
 - The full plan is in `docs/PLAN.md`. Work one phase at a time and stop after each phase for review.
 
@@ -24,7 +24,7 @@ Purpose: turn people in a plumbing emergency (nights, weekends, holidays) into p
 ## Demo mode
 - `business.json` has `"demoMode": true`. While true: show the "DEMO SITE" banner at the top, add `<meta name="robots" content="noindex,nofollow">`, tag sample reviews "(sample review)", and show the license as a sample number.
 - Photos in `/design-export/img` are AI-generated test images. Never remove the demo banner while they are in use.
-- Switching to production means: set `demoMode` to false, replace every value in `business.json`, replace all photos with real ones, and pass the legal review below. The production build must fail if `demoMode` is true or any `[BRACKET]` text remains.
+- Switching to production means: set `demoMode` to false, replace every value in `business.json`, replace all photos with real ones, and pass the legal review below. The production build (`SITE_ENV=production npm run build`) must fail if `demoMode` is true or any `[BRACKET]` text remains. A plain `npm run build` only warns, so the demo site can deploy.
 
 ## Stack
 - Astro, plain CSS from tokens, no UI framework.
@@ -38,8 +38,13 @@ Purpose: turn people in a plumbing emergency (nights, weekends, holidays) into p
 /docs/PLAN.md         the phased build plan
 /src/data/business.json   every changing fact lives here
 /src/components       Header, CallBar, EmergencyCard, PriceTable, Reviews, ServiceMap, Footer
+/src/layouts          BaseLayout
+/src/lib/business.ts  helpers that read business.json
+/src/styles           tokens.css (design tokens), global.css
+/src/assets/img       photos, optimised by Astro to AVIF/WebP at two widths
 /src/pages            index, emergency pages, intent landing pages, city pages
-/public               images, favicon, robots.txt
+/scripts/check-build.mjs   launch guard (demo mode, [BRACKET] text)
+/public               fonts, favicon, robots.txt
 netlify.toml
 CLAUDE.md
 ```

@@ -1,0 +1,27 @@
+---
+import { Picture } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  /** CSS aspect-ratio, e.g. "4/3" */
+  ratio: string;
+  sizes: string;
+  widths: number[];
+  eager?: boolean;
+}
+const { src, alt, ratio, sizes, widths, eager = false } = Astro.props;
+---
+<Picture
+  src={src}
+  alt={alt}
+  widths={widths}
+  sizes={sizes}
+  formats={['avif', 'webp']}
+  fallbackFormat="jpg"
+  class="photo"
+  style={`aspect-ratio:${ratio}`}
+  loading={eager ? 'eager' : 'lazy'}
+  fetchpriority={eager ? 'high' : 'auto'}
+  decoding="async"
+/>

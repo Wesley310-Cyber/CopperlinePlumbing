@@ -1,0 +1,26 @@
+---
+import CallButton from './CallButton.astro';
+---
+<!-- Mobile-only bottom bar. With JavaScript it appears only while no in-page call button is on screen;
+     without JavaScript it stays visible, so the tel: link always works. -->
+<div class="mbar"><CallButton large label="Call now ·" /></div>
+<style>
+  .mbar{display:none}
+  @media (max-width:760px){
+    .mbar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--teal);padding:10px 12px;border-top:2px solid var(--copper-light)}
+  }
+</style>
+<script>
+  const targets = document.querySelectorAll('[data-call-primary]');
+  const onScreen = new Set<Element>();
+  const root = document.documentElement;
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) e.isIntersecting ? onScreen.add(e.target) : onScreen.delete(e.target);
+      root.classList.toggle('call-inline', onScreen.size > 0);
+    },
+    // Ignore the sticky header at the top and the call bar at the bottom.
+    { rootMargin: '-130px 0px -80px 0px' },
+  );
+  targets.forEach((t) => io.observe(t));
+</script>

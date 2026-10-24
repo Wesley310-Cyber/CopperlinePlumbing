@@ -1,0 +1,22 @@
+---
+import { biz, demo } from '../lib/business';
+const { rating, reviews } = biz;
+---
+<div class="stack head">
+  <p class="eyebrow">What our neighbors say</p>
+  <p class="score" role="img" aria-label={`Rating ${rating.value}`}>{rating.value}</p>
+  <p class="caps">from {rating.count} {rating.source} reviews</p>
+</div>
+{reviews.map((r) => (
+  <figure class="stack">
+    <blockquote class="quote">“{r.quote}”</blockquote>
+    <figcaption class="small mute">{r.name}, {r.city}{demo && ' (sample review)'}</figcaption>
+  </figure>
+))}
+<style>
+  .head{gap:2px}
+  .eyebrow{margin-bottom:10px}
+  .score{font:300 88px/1 var(--font-head)}
+  figure{margin:0;gap:12px;border-top:4px solid var(--copper);padding-top:20px}
+  .quote{margin:0}
+</style>

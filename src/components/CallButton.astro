@@ -1,0 +1,18 @@
+---
+import Icon from './Icon.astro';
+import { biz, telHref } from '../lib/business';
+
+interface Props {
+  label: string;
+  /** Show the phone number after the label. */
+  number?: boolean;
+  large?: boolean;
+  /** Counts as the page's primary call action: the sticky bar and header button step aside while it is on screen. */
+  primary?: boolean;
+  class?: string;
+}
+const { label, number = true, large = false, primary = false, class: cls } = Astro.props;
+---
+<a class:list={['btn', 'btn-gold', { 'btn-lg': large }, cls]} href={telHref} data-call-primary={primary ? '' : undefined}>
+  <Icon name="phone" size="sm" /><span class="call-text">{label}{number && ' '}{number && <span class="call-num">{biz.phone.display}</span>}</span>
+</a>

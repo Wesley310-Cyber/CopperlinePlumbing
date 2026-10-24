@@ -1,0 +1,40 @@
+---
+import { biz, demo, telHref, currentYear } from '../lib/business';
+const { license, address, hours } = biz;
+---
+<footer>
+  <div class="wrap stack">
+    <div class="stack tight">
+      <p class="mark">{biz.wordmark.primary.toUpperCase()} <span>{biz.wordmark.secondary.toUpperCase()}</span></p>
+      <p>{biz.legalName}{demo && ' (demo business)'}</p>
+      <p>CA Lic. #{license.number}{demo && ' (sample number, not a real license)'} ({license.classification})</p>
+      <p>{biz.insured ? 'Licensed & Insured' : 'Licensed'}</p>
+      {license.lookupUrl
+        ? <a class="small lookup" href={license.lookupUrl} rel="noopener">Check our license on the CSLB site</a>
+        : demo && <p class="small soft">License lookup link goes here on the live site.</p>}
+    </div>
+    <div class="stack tight">
+      <p class="caps soft">Find us</p>
+      <p>{address.street}<br />{address.city}, {address.state} {address.zip}</p>
+      <p>{hours.label}, {hours.detail}</p>
+      <a class="phone" href={telHref}>{biz.phone.display}</a>
+    </div>
+    <div class="stack tight area">
+      <p class="caps soft">Service area</p>
+      <p class="small soft">{biz.serviceArea.cities.join(' · ')} · and more</p>
+    </div>
+    <p class="small soft">© {currentYear} {biz.legalName}{demo && ' (demo)'}. All rights reserved.</p>
+  </div>
+</footer>
+<style>
+  footer{background:var(--teal-deep);color:var(--cream-deep);padding:48px 0 40px}
+  .wrap{gap:28px}
+  .tight{gap:8px}
+  .soft{color:var(--mist)}
+  .mark{font:600 26px var(--font-head);letter-spacing:.08em}
+  .mark span{color:var(--copper-light)}
+  .phone{font:500 28px var(--font-head);text-decoration:none;min-height:var(--tap);display:inline-flex;align-items:center;white-space:nowrap}
+  .area{border-top:1px solid var(--line-on-teal);padding-top:18px;gap:6px}
+  .lookup{display:inline-flex;align-items:center;min-height:var(--tap)}
+  @media (max-width:760px){footer{padding-bottom:104px}}
+</style>

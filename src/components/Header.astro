@@ -1,0 +1,23 @@
+---
+import CallButton from './CallButton.astro';
+import { biz } from '../lib/business';
+---
+<header class="site-header">
+  <div class="wrap">
+    <span class="logo">{biz.wordmark.primary.toUpperCase()}</span>
+    <p class="mob tagline">24/7 emergency plumbing. A real person answers.</p>
+    <nav class="dsk" aria-label="Sections">
+      <a href="#now">Emergencies</a><a href="#price">Pricing</a><a href="#family">Family</a><a href="#area">Area</a><a href="#callback">Callback</a>
+    </nav>
+    <CallButton class="dsk header-call" label="Call" />
+  </div>
+</header>
+<style>
+  .site-header{background:var(--cream);border-bottom:1px solid var(--rule)}
+  .wrap{display:flex;align-items:center;gap:12px;padding-top:8px;padding-bottom:8px}
+  .logo{font:600 24px var(--font-head);letter-spacing:.08em;flex:none}
+  .tagline{flex:1;font-size:12px;line-height:1.25;font-weight:600}
+  nav{display:flex;gap:20px;flex:1;justify-content:center}
+  nav a{display:inline-flex;align-items:center;min-height:var(--tap);text-decoration:none;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+  nav a:hover{text-decoration:underline;text-decoration-color:var(--copper);text-decoration-thickness:2px;text-underline-offset:6px}
+</style>

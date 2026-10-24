@@ -1,0 +1,90 @@
+@import './tokens.css';
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/fraunces-latin.woff2') format('woff2');
+}
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/figtree-latin.woff2') format('woff2');
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font-body);font-size:18px;line-height:1.65;font-weight:400}
+p{margin:0;text-wrap:pretty}
+ul,ol{margin:0;padding:0;list-style:none}
+a{color:inherit}
+img{max-width:100%}
+h1,h2,h3{margin:0;font-family:var(--font-head);text-wrap:balance;font-weight:700;letter-spacing:-.01em}
+h1{font-size:clamp(34px,8vw,60px);line-height:1.08}
+h2{font-size:clamp(28px,5vw,42px);line-height:1.12}
+h3{font-size:26px;line-height:1.15}
+em{font-style:normal;font-weight:700;color:var(--copper)}
+.panel em{color:var(--copper-light)}
+
+.lead{font-size:clamp(19px,2.2vw,22px);line-height:1.6;font-weight:400;color:var(--ink);max-width:56ch}
+.mute{color:var(--muted)}
+.small{font-size:15px;line-height:1.5}
+.caps,.eyebrow,.sub{font-weight:700;font-size:12px;letter-spacing:.09em;text-transform:uppercase}
+.eyebrow{color:var(--muted)}
+.sub{color:var(--muted);margin-bottom:6px}
+a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--copper);outline-offset:3px}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.narrow{max-width:760px;margin-left:auto;margin-right:auto}
+.sec{padding:64px 0}
+.alt{background:var(--cream-deep)}
+.panel{background:var(--teal);color:var(--cream-deep)}
+.panel .mute,.panel .lead{color:var(--mist)}
+.panel .eyebrow{color:var(--cream-deep)}
+.stack{display:flex;flex-direction:column;gap:16px}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.split{display:flex;flex-wrap:wrap;gap:56px;align-items:center}
+.split>*{flex:1 1 420px;min-width:0}
+.anchor{scroll-margin-top:120px}
+
+/* Buttons. The phone number is wrapped in .call-num and never breaks. */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:8px 28px;border-radius:14px;border:1px solid transparent;font:700 18px/20px var(--font-body);text-decoration:none;cursor:pointer}
+.btn-lg{min-height:64px;font-size:clamp(16px,4.9vw,20px);padding-left:14px;padding-right:14px}
+.btn-gold{background:var(--copper);color:var(--on-copper)}
+.btn-gold:hover{background:var(--copper-dark)}
+.btn-line{border-width:2px;border-color:var(--ink);color:var(--ink);background:transparent}
+.panel .btn-line{border-color:var(--cream-deep);color:var(--cream-deep)}
+.call-text{text-align:center}
+.call-num{white-space:nowrap}
+.textlink{display:inline-flex;align-items:center;min-height:var(--tap);font-weight:600;font-size:18px;text-decoration:underline;text-decoration-color:var(--copper);text-decoration-thickness:2px;text-underline-offset:4px}
+
+.card{background:var(--cream-deep);border:1px solid var(--rule);border-radius:18px;padding:32px}
+.alt .card{background:var(--cream)}
+.ico{width:44px;height:44px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ico-sm{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.photo{display:block;width:100%;height:auto;object-fit:cover;border-radius:18px;border:1px solid var(--rule)}
+
+.lines{display:flex;flex-direction:column;gap:8px}
+.lines li{padding-left:20px;position:relative}
+.lines li::before{content:"";position:absolute;left:0;top:.75em;width:8px;height:3px;border-radius:2px;background:var(--copper)}
+
+/* Show the tel: bar and header button only when no in-page call button is on screen. */
+.js .mbar{transform:translateY(110%);visibility:hidden}
+.js:not(.call-inline) .mbar{transform:none;visibility:visible}
+.js.call-inline .header-call{visibility:hidden}
+
+.mob{display:none}
+@media (max-width:760px){
+  .wrap{padding:0 20px}
+  .sec{padding:56px 0}
+  .split{gap:32px}
+  .btn-lg{width:100%}
+  .card{padding:24px}
+  .dsk{display:none!important}
+  .mob{display:flex}
+}
+@media (prefers-reduced-motion:no-preference){
+  .mbar{transition:transform .2s ease,visibility .2s}
+}

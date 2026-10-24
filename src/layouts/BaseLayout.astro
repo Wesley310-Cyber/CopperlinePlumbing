@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+import DemoBanner from '../components/DemoBanner.astro';
+import StatusStrip from '../components/StatusStrip.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CallBar from '../components/CallBar.astro';
+import { biz, demo } from '../lib/business';
+
+const title = `${biz.tradeName}${demo ? ' (Demo)' : ''} — 24/7 Emergency Plumber in ${biz.address.city}, ${biz.address.state}`;
+const description = `Family-owned ${biz.address.city} plumber. 24/7 emergency service across the ${biz.serviceArea.region}. A real person answers.`;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  {demo && <meta name="robots" content="noindex,nofollow" />}
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <!-- With JavaScript, the call bar and header button start hidden; CallBar.astro reveals them. -->
+  <script is:inline>document.documentElement.classList.add('js', 'call-inline');</script>
+</head>
+<body>
+  <div class="stickytop">
+    <DemoBanner />
+    <StatusStrip />
+    <Header />
+  </div>
+  <main><slot /></main>
+  <Footer />
+  <CallBar />
+</body>
+</html>
+<style is:global>
+  .stickytop{position:sticky;top:0;z-index:50}
+</style>

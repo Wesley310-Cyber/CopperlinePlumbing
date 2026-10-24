@@ -1,0 +1,49 @@
+---
+import { biz, owner } from '../lib/business';
+---
+<div id="sent" hidden>
+  <div class="card stack" role="status">
+    <h3>Got it. We'll call you back.</h3>
+    <p>{owner.firstName} will call you at the number you gave. If it turns urgent, call <span class="call-num">{biz.phone.display}</span>.</p>
+    <div><button class="btn btn-line" type="button" id="reset">Send another</button></div>
+  </div>
+</div>
+<div id="form-wrap">
+  <form id="cb" class="card stack" name="callback" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="callback" />
+    <p hidden><label>Skip: <input name="bot-field" /></label></p>
+    <div class="field"><label for="l-name">Your name</label><input id="l-name" name="name" type="text" autocomplete="name" /></div>
+    <div class="field"><label for="l-phone">Best phone number</label><input id="l-phone" name="phone" type="tel" autocomplete="tel" /></div>
+    <div class="field"><label for="l-who">I am a</label><select id="l-who" name="who"><option>Homeowner</option><option>Landlord or property manager</option><option>Business or restaurant</option></select></div>
+    <div class="field"><label for="l-need">I need</label><select id="l-need" name="need"><option>A quote or repair, not urgent</option><option>A maintenance plan</option><option>Something else</option></select></div>
+    <button class="btn btn-gold btn-lg" type="submit">Call me back</button>
+    <p class="small mute">If water is moving where it shouldn't, don't use this form. Call <span class="call-num">{biz.phone.display}</span>.</p>
+  </form>
+</div>
+<style>
+  form{gap:16px}
+  .field{display:flex;flex-direction:column}
+  /* 44px tall labels are easier to tap and focus the field. */
+  .field label{display:flex;align-items:flex-end;min-height:44px;padding-bottom:4px;font-weight:700;font-size:12px;letter-spacing:.09em;text-transform:uppercase}
+  .field input,.field select{width:100%;min-height:54px;font:inherit;padding:12px 14px;border:2px solid var(--muted);border-radius:12px;background:var(--cream);color:var(--ink)}
+</style>
+<script>
+  const f = document.getElementById('cb') as HTMLFormElement;
+  const sent = document.getElementById('sent')!;
+  const wrap = document.getElementById('form-wrap')!;
+  f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(f) as any).toString(),
+    }).catch(() => {});
+    wrap.hidden = true;
+    sent.hidden = false;
+  });
+  document.getElementById('reset')!.addEventListener('click', () => {
+    f.reset();
+    sent.hidden = true;
+    wrap.hidden = false;
+  });
+</script>

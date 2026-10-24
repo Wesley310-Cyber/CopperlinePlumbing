@@ -1,2 +1,9 @@
 [build]
-  publish = "."
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Launch: add SITE_ENV = "production" here (or in the Netlify UI). The build then fails
+# while demoMode is true or any [BRACKET] placeholder remains. See README.md.

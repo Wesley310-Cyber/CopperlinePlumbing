@@ -1,0 +1,39 @@
+---
+import { biz } from '../lib/business';
+const [z1, z2, z3] = biz.pricing.zones;
+const label = (s: string) => s.toUpperCase();
+// Positions are schematic. Every name must also appear in business.json serviceArea.cities.
+const places = [
+  { name: 'Altadena', x: 296, y: 236, tx: 306, ty: 232 },
+  { name: 'Arcadia', x: 352, y: 288, tx: 362, ty: 294 },
+  { name: 'Alhambra', x: 270, y: 340, tx: 296, ty: 346 },
+  { name: 'West Covina', x: 344, y: 352, tx: 354, ty: 358 },
+].filter((p) => biz.serviceArea.cities.includes(p.name));
+---
+<figure>
+  <svg viewBox="0 0 560 560" role="img" aria-label={`Schematic map: ${z1.name} around ${biz.address.city}, ${z2.name} beyond it, ${z3.name} out to ${biz.pricing.maxTravelMiles} miles.`}>
+    <circle cx="280" cy="280" r="262" class="ring r3"></circle>
+    <circle cx="280" cy="280" r="178" class="ring r2"></circle>
+    <circle cx="280" cy="280" r="98" class="ring r1"></circle>
+    <g class="zone-label"><text x="280" y="528">{label(z3.name)} · UP TO {biz.pricing.maxTravelMiles} MILES</text><text x="280" y="436">{label(z2.name)}</text><text x="280" y="392">{label(z1.name)}</text></g>
+    <g class="pin">{places.map((p) => <circle cx={p.x} cy={p.y} r="5"></circle>)}</g>
+    <g class="city">{places.map((p) => <text x={p.tx} y={p.ty}>{p.name}</text>)}</g>
+    <circle cx="280" cy="280" r="10" class="hub"></circle>
+    <text x="280" y="262" class="shop">{biz.address.city} shop</text>
+  </svg>
+  <figcaption class="small">Schematic map, not to scale.</figcaption>
+</figure>
+<style>
+  figure{margin:0;background:var(--teal-deep);padding:16px;border:1px solid var(--line-on-teal);border-radius:4px}
+  svg{width:100%;height:auto;display:block}
+  .ring{fill:var(--map-ring);stroke:var(--map-ring);stroke-width:2;stroke-dasharray:8 6}
+  .r3{fill-opacity:.06;stroke-opacity:.7}
+  .r2{fill-opacity:.12;stroke-opacity:.8}
+  .r1{fill-opacity:.3;stroke:var(--map-ring-hot);stroke-width:2.5;stroke-dasharray:none;stroke-opacity:1}
+  .zone-label{font-size:20px;font-weight:600;letter-spacing:2px;text-anchor:middle;fill:var(--map-text)}
+  .pin{fill:var(--map-text)}
+  .city{font-size:20px;fill:var(--map-city)}
+  .hub{fill:var(--map-ring-hot)}
+  .shop{text-anchor:middle;font-size:22px;font-weight:600;fill:var(--map-text)}
+  figcaption{color:var(--mist);padding-top:10px}
+</style>
