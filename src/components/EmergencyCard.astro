@@ -16,7 +16,7 @@ const { id, title, summary, signs, doNow, tonight, permanentFix } = Astro.props;
 const range = priceRange(biz.pricing.emergencies[id]);
 ---
 <details>
-  <summary><Icon name={id} />{title}</summary>
+  <summary><Icon name={id} /><span class="head"><span class="title">{title}</span><span class="typ">Typically {range}</span></span></summary>
   <div class="body">
     <p class="mute">{summary}</p>
     <div><p class="sub">Signs</p><ul class="lines">{signs.map((s) => <li>{s}</li>)}</ul></div>
@@ -38,6 +38,8 @@ const range = priceRange(biz.pricing.emergencies[id]);
 <style>
   details{background:var(--cream-deep);border:1px solid var(--rule);border-radius:18px;overflow:hidden}
   summary{display:flex;align-items:center;gap:16px;min-height:80px;padding:14px 20px;cursor:pointer;list-style:none;font:700 22px/1.2 var(--font-head)}
+  .head{display:flex;flex-direction:column;gap:2px}
+  .typ{font:600 15px/1.4 var(--font-body);color:var(--muted)}
   summary::-webkit-details-marker{display:none}
   summary::after{content:"+";margin-left:auto;padding-left:8px;font:700 32px/1 var(--font-body);color:var(--copper);flex:none}
   details[open] summary::after{content:"\2013"}

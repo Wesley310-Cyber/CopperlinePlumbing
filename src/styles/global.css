@@ -70,10 +70,9 @@ a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var
 .lines li{padding-left:20px;position:relative}
 .lines li::before{content:"";position:absolute;left:0;top:.75em;width:8px;height:3px;border-radius:2px;background:var(--copper)}
 
-/* Show the tel: bar and header button only when no in-page call button is on screen. */
+/* Mobile: show the tel: bar only when no in-page call button is on screen. */
 .js .mbar{transform:translateY(110%);visibility:hidden}
 .js:not(.call-inline) .mbar{transform:none;visibility:visible}
-.js.call-inline .header-call{visibility:hidden}
 
 .mob{display:none}
 @media (max-width:760px){

@@ -20,13 +20,8 @@
   --muted: #4A5C59;
   --on-copper: #fff;
 
-  /* Carried over from the export's earlier theme (olive lines on teal, service map).
-     Kept so the look matches exactly; candidates for cleanup in a later design pass. */
-  --line-on-teal: rgba(181, 166, 66, .35);
-  --map-ring: #b5a642;
-  --map-ring-hot: #d4c96a;
-  --map-text: #f4f7fa;
-  --map-city: #bcc8d6;
+  /* Hairlines on teal: copper-light at low opacity */
+  --line-on-teal: color-mix(in srgb, var(--copper-light) 35%, transparent);
 
   /* Type */
   --font-head: "Fraunces", Georgia, serif;
