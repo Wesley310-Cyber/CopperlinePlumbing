@@ -22,13 +22,13 @@ ul,ol{margin:0;padding:0;list-style:none}
 a{color:inherit}
 img{max-width:100%}
 h1,h2,h3{margin:0;font-family:var(--font-head);text-wrap:balance;font-weight:700;letter-spacing:-.01em}
-h1{font-size:clamp(34px,8vw,60px);line-height:1.08}
-h2{font-size:clamp(28px,5vw,42px);line-height:1.12}
-h3{font-size:26px;line-height:1.15}
+h1{font-weight:640;font-size:clamp(40px,10.4vw,76px);line-height:1.02;letter-spacing:-.02em}
+h2{font-weight:640;font-size:clamp(31px,6vw,48px);line-height:1.08;letter-spacing:-.015em}
+h3{font-size:clamp(22px,3.4vw,26px);line-height:1.2}
 em{font-style:normal;font-weight:700;color:var(--accent)}
 .panel em{color:var(--panel-accent)}
 
-.lead{font-size:clamp(19px,2.2vw,22px);line-height:1.6;font-weight:400;color:var(--ink);max-width:56ch}
+.lead{font-size:clamp(19px,2.4vw,23px);line-height:1.55;font-weight:400;color:var(--ink);max-width:56ch}
 .mute{color:var(--ink-mute)}
 .small{font-size:15px;line-height:1.5}
 .caps,.eyebrow,.sub{font-weight:700;font-size:12px;letter-spacing:.09em;text-transform:uppercase}
@@ -37,9 +37,10 @@ em{font-style:normal;font-weight:700;color:var(--accent)}
 a:focus-visible,summary:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .panel a:focus-visible,footer a:focus-visible{outline-color:var(--panel-accent)}
 
+:root{--space-section:clamp(72px,11vw,120px)}
 .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
-.narrow{max-width:760px;margin-left:auto;margin-right:auto}
-.sec{padding:64px 0}
+.narrow{max-width:820px;margin-left:auto;margin-right:auto}
+.sec{padding:var(--space-section) 0}
 .alt{background:var(--surface-raised)}
 .panel{background:var(--panel);color:var(--panel-ink)}
 .panel .mute,.panel .lead{color:var(--panel-mute)}
@@ -55,12 +56,14 @@ a:focus-visible,summary:focus-visible,button:focus-visible,input:focus-visible,s
 .btn-lg{min-height:64px;font-size:clamp(16px,4.9vw,20px);padding-left:14px;padding-right:14px}
 .btn-gold{background:var(--call);color:var(--on-call)}
 .btn-gold:hover{background:var(--call-hover)}
+.btn:active{transform:translateY(1px)}
 /* Night: a soft glow on the call button. Static, so reduced motion needs no override. */
 :root[data-theme="night"] .btn-gold{box-shadow:0 0 0 1px color-mix(in srgb,var(--call) 55%,transparent),0 0 28px color-mix(in srgb,var(--call) 38%,transparent)}
 .btn-line{border-width:2px;border-color:var(--ink);color:var(--ink);background:transparent}
 .panel .btn-line{border-color:var(--panel-ink);color:var(--panel-ink)}
 .call-text{text-align:center}
 .call-num{white-space:nowrap}
+.textlink:hover{text-decoration-thickness:3px}
 .textlink{display:inline-flex;align-items:center;min-height:var(--tap);font-weight:600;font-size:18px;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:4px}
 
 .card{background:var(--surface-raised);border:1px solid var(--line);border-radius:18px;padding:32px}
@@ -80,7 +83,6 @@ a:focus-visible,summary:focus-visible,button:focus-visible,input:focus-visible,s
 .mob{display:none}
 @media (max-width:760px){
   .wrap{padding:0 20px}
-  .sec{padding:56px 0}
   .split{gap:32px}
   .btn-lg{width:100%}
   .card{padding:24px}
@@ -89,4 +91,5 @@ a:focus-visible,summary:focus-visible,button:focus-visible,input:focus-visible,s
 }
 @media (prefers-reduced-motion:no-preference){
   .mbar{transition:transform .2s ease,visibility .2s}
+  .btn,.textlink,.card,summary{transition:background-color .15s ease,border-color .15s ease,color .15s ease,transform .1s ease}
 }

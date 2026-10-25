@@ -50,7 +50,7 @@ const steps = [
   <section class="panel proof-sec">
     <div class="wrap stack gap22">
       <div class="proof">
-        <div><b>{license.number}</b><span>CA Lic. · {license.classification}</span></div>
+        <div><b>#{license.number}</b><span>CA license · {license.classification}</span></div>
         <div><b>{biz.foundedYear}</b><span>Family-owned since</span></div>
         <div><b>24/7</b><span>A real person answers</span></div>
         <div><b>{rating.value}</b><span>{rating.source}, {rating.count} reviews</span></div>
@@ -62,7 +62,7 @@ const steps = [
   <!-- What's happening: emergencies inline -->
   <section class="sec anchor now" id="now">
     <div class="wrap narrow stack gap24">
-      <div class="stack gap10"><p class="eyebrow">Right now</p><h2>What's happening <em>right now?</em></h2><p class="lead">Tap the one that fits. Not sure? Just call.</p></div>
+      <div class="stack gap10"><h2>What's happening right now?</h2><p class="lead">Tap the one that fits. Not sure? Just call.</p></div>
       <GasWarning />
       <div class="acc">
         {emergencies.map((e) => <EmergencyCard {...e} id={e.id as 'leak' | 'sewer' | 'heater'} />)}
@@ -73,7 +73,7 @@ const steps = [
   <!-- Do this while we drive -->
   <section class="sec alt anchor" id="drive">
     <div class="wrap narrow stack gap24">
-      <div class="stack gap10"><p class="eyebrow">While you wait for us</p><h2>Do this <em>while we drive</em></h2></div>
+      <div class="stack gap10"><h2>Do this while we drive</h2></div>
       <ol class="steps">
         {steps.map((s, i) => (
           <li><span class="num">{i + 1}</span><div class="stack gap6"><h3>{s.title}</h3><p class="mute">{s.text}</p></div><Icon name={s.icon} style="width:52px;height:52px" /></li>
@@ -85,7 +85,7 @@ const steps = [
   <!-- Pricing -->
   <section class="sec anchor" id="price">
     <div class="wrap narrow stack gap22">
-      <div class="stack gap10"><p class="eyebrow">No surprises</p><h2>How our after-hours pricing <em>works</em></h2><p class="lead">Here's exactly how our after-hours pricing works — before we ever roll a truck.</p></div>
+      <div class="stack gap10"><h2>How our after-hours pricing works</h2><p class="lead">Here's exactly how our after-hours pricing works — before we ever roll a truck.</p></div>
       <div class="facts">
         <div class="stack gap6 fact"><p class="sub">After-hours visit fee</p><p class="fee">{money(pricing.afterHoursVisitFee)}</p><p class="mute">If you go ahead with the repair, it's credited toward the job.</p></div>
         <div class="stack gap6 fact"><h3>A flat price, not a clock</h3><p class="mute">We price by the job, not by the minute. You'll approve a flat price before we start.</p></div>
@@ -101,8 +101,8 @@ const steps = [
   <section class="sec alt anchor" id="family">
     <div class="wrap narrow stack gap22">
       <Photo src={familyImg} alt="The Copperline family together by the van" ratio="4/3" widths={[480, 960]} sizes="(max-width: 760px) 100vw, 760px" />
-      <p class="eyebrow">Meet the family</p>
-      <h2>When you call, you get <em>{owner.firstName}</em>, not a call center.</h2>
+      
+      <h2>When you call, you get {owner.firstName}, not a call center.</h2>
       <p class="lead">{biz.about.intro}</p>
       <p class="mute">{biz.about.story}</p>
       <div class="portraits">
@@ -122,8 +122,8 @@ const steps = [
   <!-- Service area -->
   <section class="sec panel anchor" id="area">
     <div class="wrap narrow stack gap22">
-      <p class="eyebrow">Service area</p>
-      <h2 class="light">Based in {address.city}. <em>On call across the valley.</em></h2>
+      
+      <h2 class="light">Based in {address.city}. On call across the valley.</h2>
       <ServiceMap />
       <p class="mist">Based in {address.city}, serving {cityList}, and more. We'll come up to {pricing.maxTravelMiles} miles from our shop for emergencies — with a clear, flat travel fee for longer drives.</p>
     </div>
@@ -132,11 +132,11 @@ const steps = [
   <!-- Audiences + plans -->
   <section class="sec">
     <div class="wrap narrow stack gap22">
-      <p class="eyebrow">Beyond the emergency</p>
-      <h2>For homes, rentals, and <em>the shops downstairs</em></h2>
-      <div class="card stack gap8"><h3>Homeowners</h3><p><strong>We treat your home like ours.</strong></p><p class="mute">Shoe covers, drop cloths, and a clear explanation before we touch anything.</p></div>
-      <div class="card stack gap8"><h3>Landlords &amp; property managers</h3><p><strong>One call, priority response.</strong></p><p class="mute">Photos and invoices for your records, tenant-friendly scheduling, and maintenance plans for small multi-unit buildings.</p></div>
-      <div class="card stack gap8"><h3>Small businesses &amp; restaurants</h3><p><strong>We know every hour closed costs you money.</strong></p><p class="mute">Priority dispatch, night and weekend repairs, and a plan that catches problems before service.</p></div>
+      
+      <h2>For homes, rentals, and the shops downstairs</h2>
+      <div class="aud"><h3>Homeowners</h3><div class="stack gap6"><p><strong>We treat your home like ours.</strong></p><p class="mute">Shoe covers, drop cloths, and a clear explanation before we touch anything.</p></div></div>
+      <div class="aud"><h3>Landlords &amp; property managers</h3><div class="stack gap6"><p><strong>One call, priority response.</strong></p><p class="mute">Photos and invoices for your records, tenant-friendly scheduling, and maintenance plans for small multi-unit buildings.</p></div></div>
+      <div class="aud"><h3>Small businesses &amp; restaurants</h3><div class="stack gap6"><p><strong>We know every hour closed costs you money.</strong></p><p class="mute">Priority dispatch, night and weekend repairs, and a plan that catches problems before service.</p></div></div>
       <a class="textlink" href="#callback">Ask about a maintenance plan →</a>
     </div>
   </section>
@@ -144,8 +144,8 @@ const steps = [
   <!-- Callback / plan form -->
   <section class="sec alt anchor" id="callback">
     <div class="wrap narrow stack gap20">
-      <p class="eyebrow">Not urgent?</p>
-      <h2>We'll <em>call you back.</em></h2>
+      
+      <h2>We'll call you back.</h2>
       <p class="lead">Quotes, maintenance plans, a drain that's slow but not backing up. Leave your number and we'll call you back the same business day.</p>
       <CallbackForm />
     </div>
@@ -163,15 +163,15 @@ const steps = [
 
 <style>
   .gap6{gap:6px}.gap8{gap:8px}.gap10{gap:10px}.gap20{gap:20px}.gap22{gap:22px}.gap24{gap:24px}
-  .hero{padding:40px 0 48px}
+  .hero{padding:clamp(40px,7vw,88px) 0 clamp(48px,8vw,104px)}
   .hero .split{gap:32px}
   .cta-row{gap:4px 24px}
-  .proof-sec{padding:36px 0}
+  .proof-sec{padding:48px 0}
   .proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:22px 16px}
-  .proof b{display:block;font:700 34px/1.1 var(--font-head);color:var(--panel-accent);letter-spacing:.01em}
+  .proof b{display:block;font:700 clamp(28px,7.6vw,34px)/1.1 var(--font-head);color:var(--panel-accent);letter-spacing:.01em}
   .proof span{display:block;margin-top:6px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--panel-mute)}
   .trust{color:var(--panel-mute);border-top:1px solid var(--line-on-teal);padding-top:16px}
-  .now{padding-top:96px;padding-bottom:56px}
+  .now{padding-bottom:56px}
   .acc{display:flex;flex-direction:column;gap:14px}
   .steps{display:flex;flex-direction:column}
   .steps li{display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--line)}
@@ -184,11 +184,11 @@ const steps = [
   .fee{font:300 60px/1 var(--font-head)}
   .portraits{display:grid;gap:10px;grid-template-columns:repeat(3,minmax(0,1fr))}
   .cap{font-size:11px}
+  .aud{display:grid;grid-template-columns:minmax(0,1fr);gap:8px 40px;padding:28px 0;border-top:1px solid var(--line)}
+  .aud:last-of-type{border-bottom:1px solid var(--line)}
+  @media (min-width:900px){.aud{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}}
   .light{color:var(--panel-ink)}
   .mist{color:var(--panel-mute)}
-  .final{padding:72px 0;text-align:center;border-top:6px solid var(--accent)}
+  .final{padding:clamp(72px,10vw,112px) 0;text-align:center;border-top:6px solid var(--accent)}
   .center{align-items:center}
-  @media (max-width:760px){
-    .now{padding-top:56px}
-  }
 </style>

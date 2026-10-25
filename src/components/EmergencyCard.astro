@@ -40,6 +40,7 @@ const range = priceRange(biz.pricing.emergencies[id]);
   summary{display:flex;align-items:center;gap:16px;min-height:80px;padding:14px 20px;cursor:pointer;list-style:none;font:700 22px/1.2 var(--font-head)}
   .head{display:flex;flex-direction:column;gap:2px}
   .typ{font:600 15px/1.4 var(--font-body);color:var(--ink-mute)}
+  summary:hover{background:color-mix(in srgb,var(--accent) 7%,transparent)}
   summary::-webkit-details-marker{display:none}
   summary::after{content:"+";margin-left:auto;padding-left:8px;font:700 32px/1 var(--font-body);color:var(--accent);flex:none}
   details[open] summary::after{content:"\2013"}
