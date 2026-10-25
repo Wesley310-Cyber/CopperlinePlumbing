@@ -16,7 +16,8 @@ Astro site, plain CSS, deployed to Netlify. This is a test project: every busine
 
 - `src/data/business.json`: every business fact. Pages read from it and never type facts directly.
 - `src/data/emergencies.json`: copy for the three emergency cards. Prices come from `business.json`.
-- `src/styles/tokens.css`: the only place colors and fonts are defined.
+- `src/styles/tokens.css`: the only place colors and fonts are defined, including the night theme.
+- `serviceArea.cities` in `business.json` drives the city lookup. Zone assignments and arrival windows are placeholders until the owner confirms them.
 - `design-export/`: the original Claude Design export. Read only.
 
 ## Environment variables
@@ -25,5 +26,7 @@ Astro site, plain CSS, deployed to Netlify. This is a test project: every busine
 |---|---|---|
 | `SITE_ENV` | Netlify build env | Set to `production` at launch to turn the launch guard on |
 | `NODE_VERSION` | `netlify.toml` | Node 22 |
+
+Browser storage: `copperline-theme` in `localStorage` remembers the night/day toggle. It is read and written inside try/catch, so the page works without it.
 
 No secrets are used yet. Never commit secrets.

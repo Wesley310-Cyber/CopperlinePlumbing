@@ -3,7 +3,7 @@ import CallButton from './CallButton.astro';
 ---
 <!-- Mobile-only bottom bar (the header button is desktop-only). With JavaScript it appears only while no in-page call button is on screen;
      without JavaScript it stays visible, so the tel: link always works. -->
-<div class="mbar"><CallButton large label="Call now ·" /></div>
+<aside class="mbar" aria-label="Call us"><CallButton large label="Call now ·" /></aside>
 <style>
   .mbar{display:none}
   @media (max-width:760px){

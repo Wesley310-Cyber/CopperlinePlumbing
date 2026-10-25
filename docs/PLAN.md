@@ -6,6 +6,7 @@ Work one phase at a time. Stop after each phase for review. Details and rules ar
 |---|---|---|
 | 0 Foundation | Astro project, design tokens, `business.json`, bracket and demo-mode build checks | Done, in review |
 | 1 Homepage | Port the homepage to components, call buttons, price anchors, data-driven on-call strip | Done, in review |
+| 1.5 Design polish | Night theme, copper pipe line, triage, interactive service area, type scale and rhythm | Done, in review |
 | 2 Money pages | Three emergency pages, gas safety, pricing and service area, about, membership, landlord accounts | |
 | 3 Intent landing pages | `/burst-pipe`, `/sewer-backup`, `/water-heater-leaking`, time-aware hero | |
 | 4 Capture and tracking | Call tracking hooks, GA4 events, form-to-SMS-and-email function, missed-call text-back | |

@@ -18,6 +18,7 @@ const description = `Family-owned ${biz.address.city} plumber. 24/7 emergency se
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin />
   <!-- Runs before first paint. Sets the theme (saved choice, else night from 7 p.m. to 6 a.m. local time)
@@ -35,8 +36,10 @@ const description = `Family-owned ${biz.address.city} plumber. 24/7 emergency se
 </head>
 <body>
   <div class="stickytop">
-    <DemoBanner />
-    <StatusStrip />
+    <aside aria-label="Site notices">
+      <DemoBanner />
+      <StatusStrip />
+    </aside>
     <Header />
   </div>
   <main><slot /></main>
