@@ -38,7 +38,7 @@
       const m = main.getBoundingClientRect();
       top = m.top + scrollY;
       const sections = [...main.querySelectorAll<HTMLElement>(':scope > section')].filter(
-        (s) => !s.classList.contains('hero') && !s.classList.contains('proof-sec'),
+        (s) => !['hero', 'triage-sec', 'proof-sec'].some((c) => s.classList.contains(c)),
       );
       const btn = main.querySelector<HTMLElement>('.final .btn');
       const narrow = sections[0]?.querySelector<HTMLElement>('.narrow');

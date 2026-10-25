@@ -16,7 +16,8 @@
       "Move valuables and photograph the damage for insurance."
     ],
     "tonight": "Stop the water, make a safe temporary or permanent repair, and check for hidden damage.",
-    "permanentFix": "Leak detection, section repair, or a repipe. Older homes often have galvanized pipe, and many 1950s–70s homes have copper lines in the slab. We'll look at the whole picture."
+    "permanentFix": "Leak detection, section repair, or a repipe. Older homes often have galvanized pipe, and many 1950s–70s homes have copper lines in the slab. We'll look at the whole picture.",
+    "rightNow": "Shut off the main valve and turn off the water heater."
   },
   {
     "id": "sewer",
@@ -35,7 +36,8 @@
       "Don't use chemical drain cleaners."
     ],
     "tonight": "Clear the main line and show you the camera footage, so you see exactly what we found.",
-    "permanentFix": "Root treatment, hydro jetting, trenchless lining, or lateral replacement. Mature street trees and older clay sewer lines are common in Pasadena neighborhoods, and winter storms and holiday weekends put extra load on them."
+    "permanentFix": "Root treatment, hydro jetting, trenchless lining, or lateral replacement. Mature street trees and older clay sewer lines are common in Pasadena neighborhoods, and winter storms and holiday weekends put extra load on them.",
+    "rightNow": "Stop flushing and stop running water. Skip chemical drain cleaners."
   },
   {
     "id": "heater",
@@ -53,6 +55,7 @@
       "Close the cold-water valve on top of the tank."
     ],
     "tonight": "Diagnose it, repair it if that makes sense, or replace it the same night from stock on our truck when possible.",
-    "permanentFix": "A correct replacement with straps, an expansion tank and proper venting, plus options for flushing and water softening. Water here is hard, which shortens tank life."
+    "permanentFix": "A correct replacement with straps, an expansion tank and proper venting, plus options for flushing and water softening. Water here is hard, which shortens tank life.",
+    "rightNow": "Turn off the gas or power, then close the cold-water valve on top of the tank."
   }
 ]

@@ -11,11 +11,12 @@ interface Props {
   doNow: string[];
   tonight: string;
   permanentFix: string;
+  rightNow?: string;
 }
 const { id, title, summary, signs, doNow, tonight, permanentFix } = Astro.props;
 const range = priceRange(biz.pricing.emergencies[id]);
 ---
-<details>
+<details id={`card-${id}`}>
   <summary><Icon name={id} /><span class="head"><span class="title">{title}</span><span class="typ">Typically {range}</span></span></summary>
   <div class="body">
     <p class="mute">{summary}</p>
