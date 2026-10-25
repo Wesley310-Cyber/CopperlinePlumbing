@@ -1,0 +1,99 @@
+---
+// A thin copper pipe that draws itself down the gutter as the visitor scrolls, with a fitting at
+// each section heading, and ends at the final call button. Decorative: aria-hidden, no pointer events,
+// and it never overlaps text (it runs in the left gutter). Reduced motion: drawn in full, no animation.
+// Without JavaScript the line is simply absent.
+---
+<svg class="pipe" aria-hidden="true" focusable="false">
+  <path class="track"></path>
+  <path class="run"></path>
+  <g class="fittings"></g>
+</svg>
+<style>
+  .pipe{position:absolute;left:0;top:0;pointer-events:none;z-index:1;overflow:visible}
+  .track,.run{fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .track{stroke:var(--line);stroke-width:2;opacity:.7}
+  .run{stroke:var(--accent);stroke-width:3}
+  :global(.pipe .fitting){opacity:0}
+  :global(.pipe .fitting.on),:global(.pipe.static .fitting){opacity:1}
+  :global(.pipe .fitting circle){fill:var(--surface);stroke:var(--accent);stroke-width:3}
+  :global(.pipe .fitting path){fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round}
+  @media (prefers-reduced-motion:no-preference){
+    :global(.pipe .fitting){transition:opacity .25s ease}
+  }
+</style>
+<script>
+  const svg = document.querySelector<SVGSVGElement>('.pipe');
+  const main = document.querySelector('main');
+  if (svg && main) {
+    const NS = 'http://www.w3.org/2000/svg';
+    const track = svg.querySelector<SVGPathElement>('.track')!;
+    const run = svg.querySelector<SVGPathElement>('.run')!;
+    const fittings = svg.querySelector<SVGGElement>('.fittings')!;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let len = 0, y0 = 0, yEnd = 1, top = 0, nodes: { y: number; el: SVGGElement }[] = [];
+    if (reduce) svg.classList.add('static');
+
+    const build = () => {
+      const m = main.getBoundingClientRect();
+      top = m.top + scrollY;
+      const sections = [...main.querySelectorAll<HTMLElement>(':scope > section')].filter(
+        (s) => !s.classList.contains('hero') && !s.classList.contains('proof-sec'),
+      );
+      const btn = main.querySelector<HTMLElement>('.final .btn');
+      const narrow = sections[0]?.querySelector<HTMLElement>('.narrow');
+      if (!sections.length || !btn || !narrow) return;
+      const x = innerWidth >= 900 ? Math.max(12, narrow.getBoundingClientRect().left - 36) : 10;
+      const heads = sections.map((s) => s.querySelector<HTMLElement>('h2'));
+      const ys = heads.map((h) => (h ? h.getBoundingClientRect().top + scrollY - top + 18 : 0));
+      y0 = ys[0] - 36;
+      const b = btn.getBoundingClientRect();
+      const ey = b.top + scrollY - top + b.height / 2;
+      const bx = b.left;
+      yEnd = ey;
+      const r = Math.min(14, Math.max(4, bx - x - 2));
+      const d = `M${x} ${y0}V${ey - r}Q${x} ${ey} ${x + r} ${ey}H${bx}`;
+      svg.setAttribute('width', String(m.width));
+      svg.setAttribute('height', String(m.height));
+      track.setAttribute('d', d);
+      run.setAttribute('d', d);
+      len = run.getTotalLength();
+      run.style.strokeDasharray = String(len);
+      fittings.replaceChildren();
+      nodes = [];
+      ys.forEach((y, i) => {
+        if (!heads[i]) return;
+        const g = document.createElementNS(NS, 'g');
+        g.setAttribute('class', 'fitting');
+        const c = document.createElementNS(NS, 'circle');
+        c.setAttribute('cx', String(x)); c.setAttribute('cy', String(y)); c.setAttribute('r', '5');
+        const stub = document.createElementNS(NS, 'path');
+        stub.setAttribute('d', `M${x + 5} ${y}h${Math.min(12, Math.max(4, narrow.getBoundingClientRect().left - x - 8))}`);
+        g.append(stub, c);
+        fittings.append(g);
+        nodes.push({ y, el: g });
+      });
+      update();
+    };
+
+    const update = () => {
+      if (!len) return;
+      // Reading position: 60% down the viewport. The pipe is complete when it reaches the final button.
+      const pos = scrollY + innerHeight * 0.6 - top;
+      const frac = reduce ? 1 : Math.min(1, Math.max(0, (pos - y0) / (yEnd - y0)));
+      run.style.strokeDashoffset = String(len * (1 - frac));
+      if (!reduce) for (const n of nodes) n.el.classList.toggle('on', pos >= n.y);
+    };
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => { ticking = false; update(); });
+    };
+    build();
+    addEventListener('load', build);
+    if (!reduce) addEventListener('scroll', onScroll, { passive: true });
+    new ResizeObserver(build).observe(main);
+  }
+</script>

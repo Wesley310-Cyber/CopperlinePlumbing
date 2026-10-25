@@ -8,6 +8,7 @@ import Icon from '../components/Icon.astro';
 import Photo from '../components/Photo.astro';
 import PriceTable from '../components/PriceTable.astro';
 import Reviews from '../components/Reviews.astro';
+import PipeLine from '../components/PipeLine.astro';
 import ServiceMap from '../components/ServiceMap.astro';
 import emergencies from '../data/emergencies.json';
 import { biz, money, owner, leadTech, yearsInBusiness } from '../lib/business';
@@ -29,6 +30,7 @@ const steps = [
 ] as const;
 ---
 <BaseLayout>
+  <PipeLine />
   <!-- Hero -->
   <section class="hero">
     <div class="wrap split">

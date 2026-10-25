@@ -93,3 +93,4 @@ a:focus-visible,summary:focus-visible,button:focus-visible,input:focus-visible,s
   .mbar{transition:transform .2s ease,visibility .2s}
   .btn,.textlink,.card,summary{transition:background-color .15s ease,border-color .15s ease,color .15s ease,transform .1s ease}
 }
+main{position:relative}
