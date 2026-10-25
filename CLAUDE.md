@@ -19,7 +19,7 @@ Purpose: turn people in a plumbing emergency (nights, weekends, holidays) into p
 - Gas smell: SoCalGas 1-800-427-2200 or 911 first, then our repair service. Gas is a safety page, not a sales page.
 - Do not state an IRS mileage rate anywhere. Explain travel fees as fuel, truck wear and technician time.
 - If call tracking records calls, show a recording notice (California requires all-party consent). Ask the owner to confirm wording with counsel.
-- Design tokens come from the Copperline design system: base teal `#0E3B3D`, cream `#FBF6EC`, copper `#A5481A`, alert `#B83A06`, fonts Fraunces (headlines) and Figtree (text). Do not add new colors.
+- Design tokens come from the Copperline design system: base teal `#0E3B3D`, cream `#FBF6EC`, copper `#A5481A`, alert `#B83A06`, fonts Fraunces (headlines) and Figtree (text). Do not add new colors. Exception: the night theme (surface #0C1A1B, surface-raised #13292B, ink #F2EBDC, ink-mute #B4C3BE, line #2C4546, base #071E1F, call #EE9A5B, on-call #1B0F06, alert #FF9168, alert background #2B1812) is an approved extension of the palette from the Copperline design system. It is defined in `src/styles/tokens.css`, and components use only the semantic tokens.
 
 ## Demo mode
 - `business.json` has `"demoMode": true`. While true: show the "DEMO SITE" banner at the top, add `<meta name="robots" content="noindex,nofollow">`, tag sample reviews "(sample review)", and show the license as a sample number.

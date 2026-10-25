@@ -20,8 +20,18 @@ const description = `Family-owned ${biz.address.city} plumber. 24/7 emergency se
   <meta name="description" content={description} />
   <link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <!-- With JavaScript, the mobile call bar starts hidden; CallBar.astro reveals them. -->
-  <script is:inline>document.documentElement.classList.add('js', 'call-inline');</script>
+  <!-- Runs before first paint. Sets the theme (saved choice, else night from 7 p.m. to 6 a.m. local time)
+       and marks the page as JavaScript-enabled; the mobile call bar starts hidden until CallBar.astro reveals it.
+       Without JavaScript the page stays in the cream theme. -->
+  <script is:inline>
+    (function () {
+      var d = document.documentElement, t = null;
+      d.classList.add('js', 'call-inline');
+      try { t = localStorage.getItem('copperline-theme'); } catch (e) {}
+      if (t !== 'night' && t !== 'day') { var h = new Date().getHours(); t = (h >= 19 || h < 6) ? 'night' : 'day'; }
+      d.setAttribute('data-theme', t);
+    })();
+  </script>
 </head>
 <body>
   <div class="stickytop">

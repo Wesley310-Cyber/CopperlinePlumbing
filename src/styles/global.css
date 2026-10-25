@@ -16,7 +16,7 @@
 }
 
 *{box-sizing:border-box}
-body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font-body);font-size:18px;line-height:1.65;font-weight:400}
+body{margin:0;background:var(--surface);color:var(--ink);font-family:var(--font-body);font-size:18px;line-height:1.65;font-weight:400}
 p{margin:0;text-wrap:pretty}
 ul,ol{margin:0;padding:0;list-style:none}
 a{color:inherit}
@@ -25,24 +25,25 @@ h1,h2,h3{margin:0;font-family:var(--font-head);text-wrap:balance;font-weight:700
 h1{font-size:clamp(34px,8vw,60px);line-height:1.08}
 h2{font-size:clamp(28px,5vw,42px);line-height:1.12}
 h3{font-size:26px;line-height:1.15}
-em{font-style:normal;font-weight:700;color:var(--copper)}
-.panel em{color:var(--copper-light)}
+em{font-style:normal;font-weight:700;color:var(--accent)}
+.panel em{color:var(--panel-accent)}
 
 .lead{font-size:clamp(19px,2.2vw,22px);line-height:1.6;font-weight:400;color:var(--ink);max-width:56ch}
-.mute{color:var(--muted)}
+.mute{color:var(--ink-mute)}
 .small{font-size:15px;line-height:1.5}
 .caps,.eyebrow,.sub{font-weight:700;font-size:12px;letter-spacing:.09em;text-transform:uppercase}
-.eyebrow{color:var(--muted)}
-.sub{color:var(--muted);margin-bottom:6px}
-a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--copper);outline-offset:3px}
+.eyebrow{color:var(--ink-mute)}
+.sub{color:var(--ink-mute);margin-bottom:6px}
+a:focus-visible,summary:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.panel a:focus-visible,footer a:focus-visible{outline-color:var(--panel-accent)}
 
 .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
 .narrow{max-width:760px;margin-left:auto;margin-right:auto}
 .sec{padding:64px 0}
-.alt{background:var(--cream-deep)}
-.panel{background:var(--teal);color:var(--cream-deep)}
-.panel .mute,.panel .lead{color:var(--mist)}
-.panel .eyebrow{color:var(--cream-deep)}
+.alt{background:var(--surface-raised)}
+.panel{background:var(--panel);color:var(--panel-ink)}
+.panel .mute,.panel .lead{color:var(--panel-mute)}
+.panel .eyebrow{color:var(--panel-ink)}
 .stack{display:flex;flex-direction:column;gap:16px}
 .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .split{display:flex;flex-wrap:wrap;gap:56px;align-items:center}
@@ -52,23 +53,25 @@ a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var
 /* Buttons. The phone number is wrapped in .call-num and never breaks. */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:8px 28px;border-radius:14px;border:1px solid transparent;font:700 18px/20px var(--font-body);text-decoration:none;cursor:pointer}
 .btn-lg{min-height:64px;font-size:clamp(16px,4.9vw,20px);padding-left:14px;padding-right:14px}
-.btn-gold{background:var(--copper);color:var(--on-copper)}
-.btn-gold:hover{background:var(--copper-dark)}
+.btn-gold{background:var(--call);color:var(--on-call)}
+.btn-gold:hover{background:var(--call-hover)}
+/* Night: a soft glow on the call button. Static, so reduced motion needs no override. */
+:root[data-theme="night"] .btn-gold{box-shadow:0 0 0 1px color-mix(in srgb,var(--call) 55%,transparent),0 0 28px color-mix(in srgb,var(--call) 38%,transparent)}
 .btn-line{border-width:2px;border-color:var(--ink);color:var(--ink);background:transparent}
-.panel .btn-line{border-color:var(--cream-deep);color:var(--cream-deep)}
+.panel .btn-line{border-color:var(--panel-ink);color:var(--panel-ink)}
 .call-text{text-align:center}
 .call-num{white-space:nowrap}
-.textlink{display:inline-flex;align-items:center;min-height:var(--tap);font-weight:600;font-size:18px;text-decoration:underline;text-decoration-color:var(--copper);text-decoration-thickness:2px;text-underline-offset:4px}
+.textlink{display:inline-flex;align-items:center;min-height:var(--tap);font-weight:600;font-size:18px;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:4px}
 
-.card{background:var(--cream-deep);border:1px solid var(--rule);border-radius:18px;padding:32px}
-.alt .card{background:var(--cream)}
+.card{background:var(--surface-raised);border:1px solid var(--line);border-radius:18px;padding:32px}
+.alt .card{background:var(--surface)}
 .ico{width:44px;height:44px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .ico-sm{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.photo{display:block;width:100%;height:auto;object-fit:cover;border-radius:18px;border:1px solid var(--rule)}
+.photo{display:block;width:100%;height:auto;object-fit:cover;border-radius:18px;border:1px solid var(--line)}
 
 .lines{display:flex;flex-direction:column;gap:8px}
 .lines li{padding-left:20px;position:relative}
-.lines li::before{content:"";position:absolute;left:0;top:.75em;width:8px;height:3px;border-radius:2px;background:var(--copper)}
+.lines li::before{content:"";position:absolute;left:0;top:.75em;width:8px;height:3px;border-radius:2px;background:var(--accent)}
 
 /* Mobile: show the tel: bar only when no in-page call button is on screen. */
 .js .mbar{transform:translateY(110%);visibility:hidden}

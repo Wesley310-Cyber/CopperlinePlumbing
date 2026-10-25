@@ -1,27 +1,56 @@
 /* Design tokens: Copperline design system (cream / deep teal / copper, Fraunces + Figtree).
-   Do not add new colors. Every value below comes from the Claude Design export. */
+   Do not add new colors. The night theme below is an approved extension of the palette. */
 :root {
-  /* Brand */
+  /* Brand palette */
   --teal: #0E3B3D;
   --cream: #FBF6EC;
   --copper: #A5481A;
-  --alert: #B83A06;
+  --alert-brand: #B83A06;
 
-  /* Tints and shades of the brand colors used by the export */
+  /* Tints and shades of the brand colors */
   --teal-deep: #0A2D2F;
   --cream-deep: #F3EBDA;
   --copper-light: #E3A35C;
   --copper-dark: #8D3D14;
-  --copper-ghost: #A5481A26;
   --alert-tint: #FCEADB;
   --mist: #B9CFCB;
   --rule: #D8CCB2;
-  --ink: #16282A;
+  --ink-brand: #16282A;
   --muted: #4A5C59;
-  --on-copper: #fff;
 
-  /* Hairlines on teal: copper-light at low opacity */
-  --line-on-teal: color-mix(in srgb, var(--copper-light) 35%, transparent);
+  /* Night palette (approved extension) */
+  --night-surface: #0C1A1B;
+  --night-surface-raised: #13292B;
+  --night-ink: #F2EBDC;
+  --night-ink-mute: #B4C3BE;
+  --night-line: #2C4546;
+  --night-base: #071E1F;
+  --night-call: #EE9A5B;
+  --night-on-call: #1B0F06;
+  --night-alert: #FF9168;
+  --night-alert-bg: #2B1812;
+
+  /* Semantic tokens: components use these, never the raw palette */
+  --surface: var(--cream);
+  --surface-raised: var(--cream-deep);
+  --ink: var(--ink-brand);
+  --ink-mute: var(--muted);
+  --line: var(--rule);
+  --accent: var(--copper);            /* copper as text, rules and icons on the page surface */
+  --call: var(--copper);
+  --on-call: #fff;
+  --call-hover: var(--copper-dark);
+  --alert: var(--alert-brand);
+  --alert-bg: var(--alert-tint);
+  --on-light: var(--ink-brand);       /* dark text that stays dark in both themes */
+
+  /* Dark panels (hero stats, service area, final call, footer, mobile bar) */
+  --panel: var(--teal);
+  --panel-deep: var(--teal-deep);
+  --panel-ink: var(--cream-deep);
+  --panel-mute: var(--mist);
+  --panel-accent: var(--copper-light);
+  --line-on-teal: color-mix(in srgb, var(--panel-accent) 35%, transparent);
 
   /* Type */
   --font-head: "Fraunces", Georgia, serif;
@@ -29,4 +58,26 @@
 
   /* Layout */
   --tap: 48px;
+  color-scheme: light;
+}
+
+:root[data-theme="night"] {
+  --surface: var(--night-surface);
+  --surface-raised: var(--night-surface-raised);
+  --ink: var(--night-ink);
+  --ink-mute: var(--night-ink-mute);
+  --line: var(--night-line);
+  --accent: var(--night-call);
+  --call: var(--night-call);
+  --on-call: var(--night-on-call);
+  --call-hover: color-mix(in srgb, var(--night-call) 85%, white);
+  --alert: var(--night-alert);
+  --alert-bg: var(--night-alert-bg);
+
+  --panel: var(--night-base);
+  --panel-deep: var(--night-surface);
+  --panel-ink: var(--night-ink);
+  --panel-mute: var(--night-ink-mute);
+  --panel-accent: var(--night-call);
+  color-scheme: dark;
 }
