@@ -1,5 +1,5 @@
 ---
-import { biz, demo, telHref, currentYear } from '../lib/business';
+import { biz, demo, telHref, currentYear, homeCities } from '../lib/business';
 const { license, address, hours } = biz;
 ---
 <footer>
@@ -21,7 +21,7 @@ const { license, address, hours } = biz;
     </div>
     <div class="stack tight area">
       <p class="caps soft">Service area</p>
-      <p class="small soft">{biz.serviceArea.cities.join(' · ')} · and more</p>
+      <p class="small soft">{homeCities.join(' · ')} · and more</p>
     </div>
     <p class="small soft">© {currentYear} {biz.legalName}{demo && ' (demo)'}. All rights reserved.</p>
   </div>

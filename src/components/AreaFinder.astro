@@ -1,0 +1,156 @@
+---
+import CallButton from './CallButton.astro';
+import { biz, cities, zones, money } from '../lib/business';
+const byZone = zones.map((z) => ({ ...z, cities: cities.filter((c) => c.zone === z.id).map((c) => c.name) }));
+const data = {
+  cities,
+  zones: zones.map((z) => ({ id: z.id, name: z.name, fee: z.travelFee === 0 ? 'No travel fee' : money(z.travelFee), window: z.arrivalWindow })),
+};
+---
+<div class="finder" data-finder data-json={JSON.stringify(data)}>
+  <label class="flabel" for="city-input">Type your city</label>
+  <div class="field-wrap">
+    <input id="city-input" type="text" role="combobox" aria-expanded="false" aria-controls="city-list" aria-autocomplete="list" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Start typing, like Arcadia" />
+    <ul id="city-list" role="listbox" aria-label="Cities" hidden></ul>
+  </div>
+  <div class="result" role="status" aria-live="polite" data-result></div>
+  <div class="miss" data-miss hidden>
+    <CallButton large primary label="Call" />
+  </div>
+</div>
+<details class="all">
+  <summary>See every city by zone</summary>
+  <div class="zones">
+    {byZone.map((z) => (
+      <div>
+        <h3>{z.name}</h3>
+        <p class="small meta">{z.travelFee === 0 ? 'No travel fee' : `${money(z.travelFee)} travel fee`} · Arrives in {z.arrivalWindow}</p>
+        <p class="small">{z.cities.join(', ')}</p>
+      </div>
+    ))}
+  </div>
+</details>
+<style>
+  /* Without JavaScript the finder stays hidden and the full list below does the job. */
+  .finder{display:none;flex-direction:column;gap:12px}
+  :global(.js) .finder{display:flex}
+  .flabel{font:700 20px/1.2 var(--font-head)}
+  .field-wrap{position:relative}
+  input{width:100%;min-height:56px;font:inherit;padding:12px 16px;border:2px solid var(--panel-mute);border-radius:12px;background:var(--surface);color:var(--ink)}
+  input:focus-visible{outline:3px solid var(--panel-accent);outline-offset:3px}
+  ul{position:absolute;z-index:5;left:0;right:0;top:calc(100% + 6px);margin:0;padding:6px;list-style:none;max-height:288px;overflow-y:auto;background:var(--surface);color:var(--ink);border:2px solid var(--line);border-radius:12px;box-shadow:0 12px 32px rgb(0 0 0 / .25)}
+  ul :global(li){display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:var(--tap);padding:0 12px;border-radius:8px;cursor:pointer}
+  ul :global(li[aria-selected="true"]),ul :global(li:hover){background:var(--surface-raised);outline:2px solid var(--accent);outline-offset:-2px}
+  ul :global(li small){color:var(--ink-mute);font-size:14px}
+  .result{min-height:0}
+  .result :global(.found){display:grid;gap:4px 28px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));padding:20px;border:1px solid var(--line-on-teal);border-top:4px solid var(--panel-accent);border-radius:14px;background:color-mix(in srgb,var(--panel-ink) 6%,transparent)}
+  .result :global(.found h3){grid-column:1/-1;font-size:24px}
+  .result :global(.k){display:block;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--panel-mute)}
+  .result :global(.v){font:600 24px/1.2 var(--font-head)}
+  .result :global(.none){font:600 22px/1.3 var(--font-head)}
+  .all{margin-top:4px}
+  summary{display:flex;align-items:center;min-height:var(--tap);cursor:pointer;font-weight:700;color:var(--panel-accent);text-decoration:underline;text-underline-offset:4px}
+  .zones{display:grid;gap:18px;padding:8px 0 4px}
+  .meta{color:var(--panel-mute)}
+  h3{font-size:20px}
+</style>
+<script>
+  type City = { name: string; zone: number };
+  type Zone = { id: number; name: string; fee: string; window: string };
+  const root = document.querySelector<HTMLElement>('[data-finder]');
+  if (root) {
+    const { cities, zones } = JSON.parse(root.dataset.json!) as { cities: City[]; zones: Zone[] };
+    const input = root.querySelector<HTMLInputElement>('input')!;
+    const list = root.querySelector<HTMLUListElement>('ul')!;
+    const result = root.querySelector<HTMLElement>('[data-result]')!;
+    const miss = root.querySelector<HTMLElement>('[data-miss]')!;
+    const map = document.querySelector<SVGSVGElement>('.map');
+    const hl = map?.querySelector<SVGCircleElement>('[data-hl]');
+    const radius: Record<number, number> = { 1: 98, 2: 178, 3: 262 };
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+    let shown: City[] = [];
+    let active = -1;
+
+    const close = () => { list.hidden = true; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); active = -1; };
+    const setActive = (i: number) => {
+      active = i;
+      [...list.children].forEach((li, n) => li.setAttribute('aria-selected', String(n === i)));
+      if (i >= 0) { input.setAttribute('aria-activedescendant', `opt-${i}`); list.children[i].scrollIntoView({ block: 'nearest' }); }
+      else input.removeAttribute('aria-activedescendant');
+    };
+    const render = (q: string) => {
+      const n = norm(q);
+      shown = n ? cities.filter((c) => norm(c.name).includes(n)).sort((a, b) => Number(!norm(a.name).startsWith(n)) - Number(!norm(b.name).startsWith(n))) : [];
+      list.replaceChildren(...shown.map((c, i) => {
+        const li = document.createElement('li');
+        li.id = `opt-${i}`; li.setAttribute('role', 'option'); li.setAttribute('aria-selected', 'false');
+        li.innerHTML = `<span></span><small></small>`;
+        li.firstElementChild!.textContent = c.name;
+        li.lastElementChild!.textContent = zones.find((z) => z.id === c.zone)?.name ?? '';
+        li.addEventListener('mousedown', (e) => { e.preventDefault(); choose(c); });
+        return li;
+      }));
+      list.hidden = shown.length === 0;
+      input.setAttribute('aria-expanded', String(shown.length > 0));
+      active = -1;
+    };
+    const light = (zone: number | null) => {
+      if (!map) return;
+      if (zone === null) { map.removeAttribute('data-active'); if (hl) hl.style.opacity = '0'; return; }
+      map.setAttribute('data-active', String(zone));
+      if (!hl) return;
+      const r = radius[zone];
+      hl.setAttribute('r', String(r));
+      hl.style.opacity = '1';
+      if (reduce) return;
+      const circ = 2 * Math.PI * r;
+      hl.style.strokeDasharray = String(circ);
+      hl.animate([{ strokeDashoffset: circ }, { strokeDashoffset: 0 }], { duration: 800, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'both' });
+      // A soft ripple that fades out, then the ring stays lit.
+      const ripple = hl.cloneNode() as SVGCircleElement;
+      ripple.removeAttribute('data-hl'); ripple.style.opacity = '.6'; ripple.style.strokeDasharray = 'none';
+      ripple.style.transformOrigin = '280px 280px'; hl.after(ripple);
+      ripple.animate([{ transform: 'scale(1)', opacity: .6 }, { transform: 'scale(1.06)', opacity: 0 }], { duration: 900, delay: 700, easing: 'ease-out', fill: 'both' }).onfinish = () => ripple.remove();
+    };
+    const choose = (c: City) => {
+      const z = zones.find((x) => x.id === c.zone)!;
+      input.value = c.name;
+      close();
+      miss.hidden = true;
+      result.innerHTML = `<div class="found"><h3></h3><div><span class="k">Travel fee</span><span class="v" data-fee></span></div><div><span class="k">Typical arrival</span><span class="v" data-win></span></div></div>`;
+      result.querySelector('h3')!.textContent = `${c.name} is in ${z.name}.`;
+      result.querySelector('[data-fee]')!.textContent = z.fee;
+      result.querySelector('[data-win]')!.textContent = z.window;
+      light(c.zone);
+    };
+    const notFound = () => {
+      close();
+      result.innerHTML = `<p class="none">Call us and we'll confirm.</p>`;
+      miss.hidden = false;
+      light(null);
+    };
+
+    input.addEventListener('input', () => {
+      const q = input.value;
+      miss.hidden = true; result.replaceChildren(); light(null);
+      render(q);
+      const exact = cities.find((c) => norm(c.name) === norm(q));
+      if (exact && norm(q).length > 2) choose(exact);
+      else if (norm(q).length >= 3 && shown.length === 0) notFound();
+    });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); if (list.hidden) render(input.value); setActive(Math.min(shown.length - 1, active + 1)); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(Math.max(0, active - 1)); }
+      else if (e.key === 'Escape') { close(); }
+      else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (active >= 0) choose(shown[active]);
+        else if (shown.length === 1) choose(shown[0]);
+        else if (norm(input.value).length >= 2 && shown.length === 0) notFound();
+        else if (shown.length > 0) setActive(0);
+      }
+    });
+    input.addEventListener('blur', close);
+  }
+</script>

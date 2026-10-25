@@ -10,9 +10,10 @@ import Photo from '../components/Photo.astro';
 import PriceTable from '../components/PriceTable.astro';
 import Reviews from '../components/Reviews.astro';
 import PipeLine from '../components/PipeLine.astro';
+import AreaFinder from '../components/AreaFinder.astro';
 import ServiceMap from '../components/ServiceMap.astro';
 import emergencies from '../data/emergencies.json';
-import { biz, money, owner, leadTech, yearsInBusiness } from '../lib/business';
+import { biz, money, owner, leadTech, yearsInBusiness, homeCities } from '../lib/business';
 
 import heroImg from '../assets/img/hero.jpg';
 import familyImg from '../assets/img/family.jpg';
@@ -23,7 +24,7 @@ import officeImg from '../assets/img/office.jpg';
 const { rating, guarantee, license, serviceArea, pricing, address } = biz;
 const guaranteeLine = `Workmanship guarantee: ${guarantee.months} months, ${guarantee.coverage}`;
 const trustLine = [biz.insured ? 'Licensed & Insured' : 'Licensed', ...biz.standards, guaranteeLine].join(' · ');
-const cityList = serviceArea.cities.join(', ');
+const cityList = homeCities.join(', ');
 const steps = [
   { icon: 'valve', title: 'Shut off the main water', text: 'Often near the hose spigot, on the garage wall, or in the curb meter box. Turn the wheel clockwise until it stops.' },
   { icon: 'heaterOff', title: 'Turn off the water heater', text: 'Gas: knob to OFF. Electric: switch off the breaker. Then close the cold-water valve on top.' },
@@ -132,6 +133,8 @@ const steps = [
     <div class="wrap narrow stack gap22">
       
       <h2 class="light">Based in {address.city}. On call across the valley.</h2>
+      <p class="lead mist">Type your city and we'll tell you the fee and how fast we usually get there.</p>
+      <AreaFinder />
       <ServiceMap />
       <p class="mist">Based in {address.city}, serving {cityList}, and more. We'll come up to {pricing.maxTravelMiles} miles from our shop for emergencies — with a clear, flat travel fee for longer drives.</p>
     </div>

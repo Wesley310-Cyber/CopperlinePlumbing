@@ -16,6 +16,11 @@ export const currentYear = now.getFullYear();
 /** The on-call strip renders only when both the name and the arrival window are filled in. */
 export const onCallReady = Boolean(business.onCall.name?.trim() && business.onCall.arrivalWindow?.trim());
 
+export const zones = business.pricing.zones;
+export const cities = business.serviceArea.cities;
+/** The cities in Zone 1, used for the plain-text lists. */
+export const homeCities = cities.filter((c) => c.zone === 1).map((c) => c.name);
+
 export const owner = business.owners[0];
 export const leadTech = business.owners[1];
 export const cityLine = `${business.address.city}, ${business.address.state}`;

@@ -3,12 +3,13 @@ import { biz, money } from '../lib/business';
 ---
 <div class="tbl">
   <table>
-    <thead><tr><th scope="col" class="caps">Zone</th><th scope="col" class="caps">Travel fee</th></tr></thead>
+    <thead><tr><th scope="col" class="caps">Zone</th><th scope="col" class="caps">Travel fee</th><th scope="col" class="caps">Arrival</th></tr></thead>
     <tbody>
       {biz.pricing.zones.map((z) => (
         <tr>
           <td><strong>{z.name}</strong><br /><span class="mute small">{z.description}</span></td>
           <td class="fee">{z.travelFee === 0 ? 'No travel fee' : money(z.travelFee)}</td>
+          <td class="fee">{z.arrivalWindow}</td>
         </tr>
       ))}
     </tbody>
@@ -16,9 +17,9 @@ import { biz, money } from '../lib/business';
 </div>
 <style>
   .tbl{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
-  table{width:100%;border-collapse:collapse;min-width:280px;font-size:16px}
+  table{width:100%;border-collapse:collapse;min-width:300px;font-size:16px}
   thead tr{background:var(--surface-raised)}
-  th{text-align:left;padding:12px 16px}
-  td{padding:12px 16px;border-top:1px solid var(--line)}
+  th{text-align:left;padding:12px 14px}
+  td{padding:12px 14px;border-top:1px solid var(--line)}
   .fee{font-weight:600}
 </style>

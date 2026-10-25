@@ -1,52 +1,101 @@
 {
   "demoMode": true,
-
   "tradeName": "Copperline Plumbing",
-  "wordmark": { "primary": "Copperline", "secondary": "Plumbing" },
+  "wordmark": {
+    "primary": "Copperline",
+    "secondary": "Plumbing"
+  },
   "legalName": "Copperline Plumbing, Inc.",
   "foundedYear": 2004,
   "familyName": "Reyes",
   "owners": [
-    { "firstName": "Dana", "lastName": "Reyes", "role": "owner" },
-    { "firstName": "Marcos", "lastName": "Reyes", "role": "lead technician" }
+    {
+      "firstName": "Dana",
+      "lastName": "Reyes",
+      "role": "owner"
+    },
+    {
+      "firstName": "Marcos",
+      "lastName": "Reyes",
+      "role": "lead technician"
+    }
   ],
-
   "license": {
     "number": "000000",
     "classification": "C-36 Plumbing",
     "lookupUrl": ""
   },
   "insured": true,
-
-  "phone": { "display": "(626) 555-0100", "e164": "+16265550100" },
+  "phone": {
+    "display": "(626) 555-0100",
+    "e164": "+16265550100"
+  },
   "address": {
     "street": "100 Sample Street",
     "city": "Pasadena",
     "state": "CA",
     "zip": "91101"
   },
-  "hours": { "label": "Open 24/7", "detail": "365 days" },
-
-  "gasUtility": { "name": "SoCalGas", "phone": "1-800-427-2200", "e164": "+18004272200" },
-
-  "onCall": { "name": "Marcos", "arrivalWindow": "30–45 min", "region": "San Gabriel Valley" },
-
+  "hours": {
+    "label": "Open 24/7",
+    "detail": "365 days"
+  },
+  "gasUtility": {
+    "name": "SoCalGas",
+    "phone": "1-800-427-2200",
+    "e164": "+18004272200"
+  },
+  "onCall": {
+    "name": "Marcos",
+    "arrivalWindow": "30–45 min",
+    "region": "San Gabriel Valley"
+  },
   "pricing": {
     "afterHoursVisitFee": 149,
     "maxTravelMiles": 60,
     "zones": [
-      { "name": "Zone 1", "description": "Most of the San Gabriel Valley", "travelFee": 0 },
-      { "name": "Zone 2", "description": "A longer drive", "travelFee": 75 },
-      { "name": "Zone 3", "description": "Up to 60 miles", "travelFee": 150 }
+      {
+        "id": 1,
+        "name": "Zone 1",
+        "description": "Most of the San Gabriel Valley",
+        "travelFee": 0,
+        "arrivalWindow": "30–45 min"
+      },
+      {
+        "id": 2,
+        "name": "Zone 2",
+        "description": "A longer drive",
+        "travelFee": 75,
+        "arrivalWindow": "45–75 min"
+      },
+      {
+        "id": 3,
+        "name": "Zone 3",
+        "description": "Up to 60 miles",
+        "travelFee": 150,
+        "arrivalWindow": "75–120 min"
+      }
     ],
     "emergencies": {
-      "leak": { "low": 400, "high": 1500 },
-      "sewer": { "low": 300, "high": 900 },
-      "heater": { "low": 900, "high": 3000 }
+      "leak": {
+        "low": 400,
+        "high": 1500
+      },
+      "sewer": {
+        "low": 300,
+        "high": 900
+      },
+      "heater": {
+        "low": 900,
+        "high": 3000
+      }
     }
   },
-
-  "rating": { "value": "4.9", "count": 212, "source": "Google" },
+  "rating": {
+    "value": "4.9",
+    "count": 212,
+    "source": "Google"
+  },
   "reviews": [
     {
       "quote": "A pipe burst under our kitchen sink on a Sunday afternoon. Marcos had the water off before I finished describing it, and the price he quoted is the price I paid.",
@@ -64,22 +113,169 @@
       "city": "South Pasadena"
     }
   ],
-
-  "standards": ["Shoe covers and drop cloths on every visit"],
-  "guarantee": { "months": 12, "coverage": "parts and labor" },
-
+  "standards": [
+    "Shoe covers and drop cloths on every visit"
+  ],
+  "guarantee": {
+    "months": 12,
+    "coverage": "parts and labor"
+  },
   "about": {
     "intro": "Dana and Marcos Reyes started Copperline in Pasadena in 2004 with one truck and one rule: treat every house like it's ours.",
     "story": "Marcos was a union pipefitter and I ran the books at a dental office. After one too many night calls to big companies that never called back, we started our own. Our kids still ride along on Saturdays to learn the trade."
   },
-
   "serviceArea": {
     "region": "San Gabriel Valley",
+    "zoneAssignmentNote": "Placeholder zone assignments and arrival windows. The owner must confirm every city and zone before launch.",
     "cities": [
-      "Pasadena", "Altadena", "South Pasadena", "San Marino", "Arcadia", "Sierra Madre",
-      "Monrovia", "Duarte", "Azusa", "Glendora", "San Dimas", "Covina", "West Covina",
-      "Baldwin Park", "El Monte", "Temple City", "Rosemead", "San Gabriel", "Alhambra",
-      "Monterey Park", "La Cañada Flintridge"
+      {
+        "name": "Pasadena",
+        "zone": 1
+      },
+      {
+        "name": "Altadena",
+        "zone": 1
+      },
+      {
+        "name": "South Pasadena",
+        "zone": 1
+      },
+      {
+        "name": "San Marino",
+        "zone": 1
+      },
+      {
+        "name": "Arcadia",
+        "zone": 1
+      },
+      {
+        "name": "Sierra Madre",
+        "zone": 1
+      },
+      {
+        "name": "Monrovia",
+        "zone": 1
+      },
+      {
+        "name": "Duarte",
+        "zone": 1
+      },
+      {
+        "name": "Azusa",
+        "zone": 1
+      },
+      {
+        "name": "Glendora",
+        "zone": 1
+      },
+      {
+        "name": "San Dimas",
+        "zone": 1
+      },
+      {
+        "name": "Covina",
+        "zone": 1
+      },
+      {
+        "name": "West Covina",
+        "zone": 1
+      },
+      {
+        "name": "Baldwin Park",
+        "zone": 1
+      },
+      {
+        "name": "El Monte",
+        "zone": 1
+      },
+      {
+        "name": "Temple City",
+        "zone": 1
+      },
+      {
+        "name": "Rosemead",
+        "zone": 1
+      },
+      {
+        "name": "San Gabriel",
+        "zone": 1
+      },
+      {
+        "name": "Alhambra",
+        "zone": 1
+      },
+      {
+        "name": "Monterey Park",
+        "zone": 1
+      },
+      {
+        "name": "La Cañada Flintridge",
+        "zone": 1
+      },
+      {
+        "name": "Glendale",
+        "zone": 2
+      },
+      {
+        "name": "Burbank",
+        "zone": 2
+      },
+      {
+        "name": "Los Angeles",
+        "zone": 2
+      },
+      {
+        "name": "Montebello",
+        "zone": 2
+      },
+      {
+        "name": "Whittier",
+        "zone": 2
+      },
+      {
+        "name": "La Verne",
+        "zone": 2
+      },
+      {
+        "name": "Pomona",
+        "zone": 2
+      },
+      {
+        "name": "Claremont",
+        "zone": 2
+      },
+      {
+        "name": "Santa Monica",
+        "zone": 3
+      },
+      {
+        "name": "Torrance",
+        "zone": 3
+      },
+      {
+        "name": "Long Beach",
+        "zone": 3
+      },
+      {
+        "name": "Santa Clarita",
+        "zone": 3
+      },
+      {
+        "name": "Ontario",
+        "zone": 3
+      },
+      {
+        "name": "Rancho Cucamonga",
+        "zone": 3
+      },
+      {
+        "name": "Anaheim",
+        "zone": 3
+      },
+      {
+        "name": "Irvine",
+        "zone": 3
+      }
     ]
   }
 }
