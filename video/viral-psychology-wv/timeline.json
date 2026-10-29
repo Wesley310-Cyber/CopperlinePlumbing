@@ -1,243 +1,243 @@
 {
- "total": 119.9,
+ "total": 103.2,
  "scenes": [
   {
    "id": "cover",
    "start": 0.0,
-   "end": 13.5,
+   "end": 11.3,
    "lines": [
     {
      "text": "A million-dollar ad budget.",
-     "start": 0.35,
-     "end": 2.081
+     "start": 0.2,
+     "end": 1.95
     },
     {
      "text": "A celebrity shoutout.",
-     "start": 2.301,
-     "end": 3.663
+     "start": 2.07,
+     "end": 3.57
     },
     {
      "text": "We assume that's what going viral costs.",
-     "start": 3.883,
-     "end": 6.725
+     "start": 3.69,
+     "end": 5.93
     },
     {
      "text": "It isn't.",
-     "start": 6.945,
-     "end": 7.936
+     "start": 6.05,
+     "end": 6.85
     },
     {
      "text": "Jonah Berger found six ingredients behind what spreads.",
-     "start": 8.156,
-     "end": 11.369
+     "start": 6.97,
+     "end": 9.89
     },
     {
      "text": "Here they are.",
-     "start": 11.589,
-     "end": 12.95
+     "start": 10.01,
+     "end": 10.94
     }
    ]
   },
   {
    "id": "social",
-   "start": 13.5,
-   "end": 28.167,
+   "start": 11.3,
+   "end": 21.833,
    "lines": [
     {
      "text": "Social currency.",
-     "start": 13.85,
-     "end": 14.841
+     "start": 11.5,
+     "end": 12.45
     },
     {
      "text": "We share what makes us look in the know.",
-     "start": 15.061,
-     "end": 18.644
+     "start": 12.57,
+     "end": 14.47
     },
     {
      "text": "New York's Please Don't Tell bar hid its entrance in a hot dog shop phone booth, and the secret itself spread the word.",
-     "start": 18.864,
-     "end": 27.633
+     "start": 14.59,
+     "end": 21.48
     }
    ]
   },
   {
    "id": "triggers",
-   "start": 28.167,
-   "end": 40.733,
+   "start": 21.833,
+   "end": 32.767,
    "lines": [
     {
      "text": "Triggers.",
-     "start": 28.517,
-     "end": 29.137
+     "start": 22.033,
+     "end": 22.783
     },
     {
      "text": "Ideas spread when everyday cues remind us.",
-     "start": 29.357,
-     "end": 32.2
+     "start": 22.903,
+     "end": 25.983
     },
     {
      "text": "Say peanut butter, and you think jelly.",
-     "start": 32.42,
-     "end": 35.262
+     "start": 26.103,
+     "end": 27.943
     },
     {
      "text": "Mars bar sales reportedly jumped when NASA's Pathfinder rover hit the news.",
-     "start": 35.482,
-     "end": 40.177
+     "start": 28.063,
+     "end": 32.413
     }
    ]
   },
   {
    "id": "emotion",
-   "start": 40.733,
-   "end": 52.833,
+   "start": 32.767,
+   "end": 42.7,
    "lines": [
     {
      "text": "Emotion.",
-     "start": 41.083,
-     "end": 41.704
+     "start": 32.967,
+     "end": 33.597
     },
     {
      "text": "In a study of nearly seven thousand New York Times articles, awe and anger made stories more likely to be shared.",
-     "start": 41.924,
-     "end": 49.951
+     "start": 33.717,
+     "end": 40.337
     },
     {
      "text": "Sadness made them less likely.",
-     "start": 50.171,
-     "end": 52.273
+     "start": 40.457,
+     "end": 42.347
     }
    ]
   },
   {
    "id": "public",
-   "start": 52.833,
-   "end": 66.5,
+   "start": 42.7,
+   "end": 53.8,
    "lines": [
     {
      "text": "Public.",
-     "start": 53.183,
-     "end": 53.804
+     "start": 42.9,
+     "end": 43.43
     },
     {
      "text": "We copy what we can see.",
-     "start": 54.024,
-     "end": 56.496
+     "start": 43.55,
+     "end": 45.09
     },
     {
      "text": "Apple turned its laptop logo to face outward, so every open laptop became a billboard.",
-     "start": 56.716,
-     "end": 62.521
+     "start": 45.21,
+     "end": 50.31
     },
     {
      "text": "Make the choice visible, and people imitate it.",
-     "start": 62.741,
-     "end": 65.954
+     "start": 50.43,
+     "end": 53.44
     }
    ]
   },
   {
    "id": "value",
-   "start": 66.5,
-   "end": 77.567,
+   "start": 53.8,
+   "end": 63.5,
    "lines": [
     {
      "text": "Practical value.",
-     "start": 66.85,
-     "end": 67.841
+     "start": 54.0,
+     "end": 54.97
     },
     {
      "text": "People share useful news.",
-     "start": 68.061,
-     "end": 69.792
+     "start": 55.09,
+     "end": 56.81
     },
     {
      "text": "In that same study, more useful articles were shared more.",
-     "start": 70.012,
-     "end": 73.966
+     "start": 56.93,
+     "end": 60.37
     },
     {
      "text": "Make it quick, clear, and worth saving.",
-     "start": 74.186,
-     "end": 77.028
+     "start": 60.49,
+     "end": 63.16
     }
    ]
   },
   {
    "id": "stories",
-   "start": 77.567,
-   "end": 90.4,
+   "start": 63.5,
+   "end": 75.633,
    "lines": [
     {
      "text": "Stories.",
-     "start": 77.917,
-     "end": 78.537
+     "start": 63.7,
+     "end": 64.31
     },
     {
      "text": "In 2006, Blendtec spent fifty dollars on supplies for its first video: a CEO in a lab coat asking, will it blend?",
-     "start": 78.757,
-     "end": 87.155
+     "start": 64.43,
+     "end": 72.47
     },
     {
      "text": "Marbles, golf balls, then an iPhone.",
-     "start": 87.375,
-     "end": 89.847
+     "start": 72.59,
+     "end": 75.3
     }
    ]
   },
   {
    "id": "payoff",
-   "start": 90.4,
-   "end": 102.033,
+   "start": 75.633,
+   "end": 86.133,
    "lines": [
     {
      "text": "The series passed one hundred fifty million views, and the company says retail blender sales rose seven hundred percent in two years.",
-     "start": 90.75,
-     "end": 99.148
+     "start": 75.833,
+     "end": 83.803
     },
     {
      "text": "The product was the story.",
-     "start": 99.368,
-     "end": 101.47
+     "start": 83.923,
+     "end": 85.773
     }
    ]
   },
   {
    "id": "recap",
-   "start": 102.033,
-   "end": 110.7,
+   "start": 86.133,
+   "end": 95.6,
    "lines": [
     {
      "text": "Social currency, triggers, emotion, public, practical value, stories.",
-     "start": 102.383,
-     "end": 105.596
+     "start": 86.333,
+     "end": 91.763
     },
     {
      "text": "You don't need all six, but each one raises the odds.",
-     "start": 105.816,
-     "end": 110.14
+     "start": 91.883,
+     "end": 95.233
     }
    ]
   },
   {
    "id": "design",
-   "start": 110.7,
-   "end": 119.9,
+   "start": 95.6,
+   "end": 103.2,
    "lines": [
     {
      "text": "So before you post, ask why someone would look good sharing this.",
-     "start": 111.05,
-     "end": 115.744
+     "start": 95.8,
+     "end": 99.73
     },
     {
      "text": "Virality isn't luck.",
-     "start": 115.964,
-     "end": 117.326
+     "start": 99.85,
+     "end": 101.25
     },
     {
      "text": "It's design.",
-     "start": 117.546,
-     "end": 118.536
+     "start": 101.37,
+     "end": 102.26
     }
    ]
   }
