@@ -1,0 +1,46 @@
+[
+ {"id":"cover","lines":[
+  {"t":"A million-dollar ad budget."},
+  {"t":"A celebrity shoutout."},
+  {"t":"We assume that's what going viral costs."},
+  {"t":"It isn't."},
+  {"t":"Jonah Berger found six ingredients behind what spreads."},
+  {"t":"Here they are."}]},
+ {"id":"social","lines":[
+  {"t":"Social currency."},
+  {"t":"We share what makes us look in the know."},
+  {"t":"New York's Please Don't Tell bar hid its entrance in a hot dog shop phone booth, and the secret itself spread the word."}]},
+ {"id":"triggers","lines":[
+  {"t":"Triggers."},
+  {"t":"Ideas spread when everyday cues remind us."},
+  {"t":"Say peanut butter, and you think jelly."},
+  {"t":"Mars bar sales reportedly jumped when NASA's Pathfinder rover hit the news."}]},
+ {"id":"emotion","lines":[
+  {"t":"Emotion."},
+  {"t":"In a study of nearly seven thousand New York Times articles, awe and anger made stories more likely to be shared."},
+  {"t":"Sadness made them less likely."}]},
+ {"id":"public","lines":[
+  {"t":"Public."},
+  {"t":"We copy what we can see."},
+  {"t":"Apple turned its laptop logo to face outward, so every open laptop became a billboard."},
+  {"t":"Make the choice visible, and people imitate it."}]},
+ {"id":"value","lines":[
+  {"t":"Practical value."},
+  {"t":"People share useful news."},
+  {"t":"In that same study, more useful articles were shared more."},
+  {"t":"Make it quick, clear, and worth saving."}]},
+ {"id":"stories","lines":[
+  {"t":"Stories."},
+  {"t":"In 2006, Blendtec spent fifty dollars on supplies for its first video: a CEO in a lab coat asking, will it blend?"},
+  {"t":"Marbles, golf balls, then an iPhone."}]},
+ {"id":"payoff","lines":[
+  {"t":"The series passed one hundred fifty million views, and the company says retail blender sales rose seven hundred percent in two years."},
+  {"t":"The product was the story."}]},
+ {"id":"recap","lines":[
+  {"t":"Social currency, triggers, emotion, public, practical value, stories."},
+  {"t":"You don't need all six, but each one raises the odds."}]},
+ {"id":"design","lines":[
+  {"t":"So before you post, ask why someone would look good sharing this."},
+  {"t":"Virality isn't luck."},
+  {"t":"It's design."}]}
+]
